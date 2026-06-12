@@ -7,21 +7,37 @@ import { fadeUp } from "@/lib/animations";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 
-const HERO_IMAGES = [
-  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-  "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-  "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80"
+const SHOWCASE_SLIDES = [
+  {
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Collaborative Planning",
+    description: "We work closely with your team to align on strategy and establish clear, actionable project milestones."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Agile Development",
+    description: "Our engineers build scalable architectures using rapid iteration and modern, future-proof technologies."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Design Workshops",
+    description: "Creating intuitive interfaces through user-centric design workshops and comprehensive wireframing."
+  },
+  {
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=2850&q=80",
+    title: "Data-Driven Decisions",
+    description: "Analyzing performance metrics to continuously optimize and scale your digital products."
+  }
 ];
 
 export function ImageShowcase() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   useEffect(() => {
     // 3-second interval for sliding images
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % HERO_IMAGES.length);
-    }, 3000);
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % SHOWCASE_SLIDES.length);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, []);
@@ -95,19 +111,20 @@ export function ImageShowcase() {
             </motion.div>
           </AnimateOnScroll>
 
-          {/* Right Side: Realistic Hero Image Slideshow */}
+          {/* Right Side: Interactive Showcase Card */}
           <div className="[perspective:1000px] w-full relative">
             <motion.div 
-              whileHover={{ scale: 1.02, rotateY: -5, rotateX: 5 }}
+              whileHover={{ scale: 1.02, rotateY: -3, rotateX: 3 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="w-full relative rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-2xl bg-[var(--color-surface)]"
+              className="w-full relative rounded-2xl border border-[var(--color-border)] shadow-xl bg-[var(--color-surface)] flex flex-col overflow-hidden"
             >
-              <div className="aspect-[4/3] lg:aspect-square relative bg-slate-900 overflow-hidden">
+              {/* Top part: Smaller Image */}
+              <div className="w-full h-56 md:h-64 relative bg-slate-900 overflow-hidden">
                 <AnimatePresence mode="popLayout">
                   <motion.img 
-                    key={currentImageIndex}
-                    src={HERO_IMAGES[currentImageIndex]} 
-                    alt={`Agency work environment ${currentImageIndex + 1}`} 
+                    key={currentSlideIndex}
+                    src={SHOWCASE_SLIDES[currentSlideIndex].image} 
+                    alt={SHOWCASE_SLIDES[currentSlideIndex].title} 
                     initial={{ opacity: 0, scale: 1.1, x: 100 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     exit={{ opacity: 0, scale: 0.9, x: -100 }}
@@ -115,17 +132,36 @@ export function ImageShowcase() {
                     className="absolute inset-0 w-full h-full object-cover object-center"
                   />
                 </AnimatePresence>
-                
-                {/* Very subtle gradient overlay to ensure it blends nicely */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-background)]/60 to-transparent pointer-events-none z-10"></div>
-                
-                {/* Slide indicators */}
-                <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
-                  {HERO_IMAGES.map((_, index) => (
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)]/20 to-transparent pointer-events-none z-10"></div>
+              </div>
+
+              {/* Bottom part: Dynamic Details */}
+              <div className="p-6 md:p-8 relative min-h-[160px] flex flex-col justify-center bg-[var(--color-surface)] z-20">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSlideIndex}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex flex-col pr-12"
+                  >
+                    <h3 className="text-lg md:text-xl font-bold text-[var(--color-primary)] mb-2">
+                      {SHOWCASE_SLIDES[currentSlideIndex].title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-[var(--color-muted)] leading-relaxed line-clamp-3">
+                      {SHOWCASE_SLIDES[currentSlideIndex].description}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Slide indicators moved to the bottom right of the text area */}
+                <div className="absolute bottom-6 right-6 md:right-8 flex gap-2">
+                  {SHOWCASE_SLIDES.map((_, index) => (
                     <div 
                       key={index} 
                       className={`h-1.5 rounded-full transition-all duration-500 ${
-                        index === currentImageIndex ? "w-6 bg-white" : "w-1.5 bg-white/50"
+                        index === currentSlideIndex ? "w-6 bg-[var(--color-primary)]" : "w-1.5 bg-[var(--color-border)] hover:bg-[var(--color-primary)]/50"
                       }`}
                     />
                   ))}
