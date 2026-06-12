@@ -12,11 +12,11 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TrustSignals />
       <Services />
       <WhyChoose />
       <ImageShowcase />
       <Process />
+      <TrustSignals />
       <Testimonials />
       <Team />
       <MultiStepContact />
