@@ -58,7 +58,7 @@ export function WhyChoose() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32 bg-[var(--color-surface)] border-y border-[var(--color-border)] overflow-hidden">
+    <section className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-[var(--color-surface)] border-y border-[var(--color-border)] overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
