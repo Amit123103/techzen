@@ -48,7 +48,7 @@ export function Navbar() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
               <span className="sr-only">TechZen</span>
-              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-auto object-contain mix-blend-multiply" />
+              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-10 object-cover rounded-full mix-blend-multiply" />
             </Link>
           </div>
 
@@ -103,7 +103,7 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">TechZen</span>
-              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-auto object-contain mix-blend-multiply" />
+              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-10 object-cover rounded-full mix-blend-multiply" />
             </Link>
             <button
               type="button"
