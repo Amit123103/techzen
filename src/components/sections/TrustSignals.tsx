@@ -4,25 +4,25 @@ import { staggerContainer, fadeUp } from "@/lib/animations";
 import { Award, ShieldCheck, Cpu, Target } from "lucide-react";
 
 const stats = [
-  { label: "Years of Experience", value: "8+", icon: <Award className="w-6 h-6" /> },
-  { label: "Projects Delivered", value: "150+", icon: <Target className="w-6 h-6" /> },
-  { label: "Client Retention", value: "98%", icon: <ShieldCheck className="w-6 h-6" /> },
-  { label: "Technologies Mastered", value: "25+", icon: <Cpu className="w-6 h-6" /> },
+    { label: "Years of Experience", value: "8+", icon: <Award className="w-5 h-5" /> },
+  { label: "Projects Delivered", value: "150+", icon: <Target className="w-5 h-5" /> },
+  { label: "Client Retention", value: "98%", icon: <ShieldCheck className="w-5 h-5" /> },
+  { label: "Technologies Mastered", value: "25+", icon: <Cpu className="w-5 h-5" /> },
 ];
 
 export function TrustSignals() {
   return (
-    <section className="py-16 border-y border-[var(--color-border)] bg-[var(--color-background)]">
+    <section className="py-12 border-y border-[var(--color-border)] bg-[var(--color-background)]">
       <Container>
         <AnimateOnScroll variants={staggerContainer}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 divide-x-0 md:divide-x divide-[var(--color-border)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 divide-x-0 md:divide-x divide-[var(--color-border)]">
             {stats.map((stat, index) => (
-              <AnimateOnScroll key={index} variants={fadeUp} className="flex flex-col items-center justify-center text-center px-4">
-                <div className="text-[var(--color-accent)] mb-4 bg-[var(--color-surface)] p-3 rounded-full border border-[var(--color-border)]">
+              <AnimateOnScroll key={index} variants={fadeUp} className="flex flex-col items-center justify-center text-center px-2">
+                <div className="text-[var(--color-accent)] mb-3 bg-[var(--color-surface)] p-2 rounded-full border border-[var(--color-border)]">
                   {stat.icon}
                 </div>
-                <div className="text-4xl font-bold text-[var(--color-text)] mb-2">{stat.value}</div>
-                <div className="text-sm font-medium text-[var(--color-muted)] uppercase tracking-wider">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold text-[var(--color-text)] mb-1">{stat.value}</div>
+                <div className="text-xs font-semibold text-[var(--color-muted)] uppercase tracking-wider">{stat.label}</div>
               </AnimateOnScroll>
             ))}
           </div>
