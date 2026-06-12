@@ -136,22 +136,30 @@ export function ImageShowcase() {
               </div>
 
               {/* Bottom part: Dynamic Details */}
-              <div className="p-6 md:p-8 relative min-h-[160px] flex flex-col justify-center bg-[var(--color-surface)] z-20">
+              <div className="p-6 md:p-8 relative min-h-[160px] flex flex-col justify-center bg-[var(--color-surface)] z-20 overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentSlideIndex}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
                     className="flex flex-col pr-12"
                   >
-                    <h3 className="text-lg md:text-xl font-bold text-[var(--color-primary)] mb-2">
+                    <motion.h3 
+                      initial={{ opacity: 0, x: 50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 50 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      className="text-lg md:text-xl font-bold text-[var(--color-primary)] mb-2"
+                    >
                       {SHOWCASE_SLIDES[currentSlideIndex].title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-[var(--color-muted)] leading-relaxed line-clamp-3">
+                    </motion.h3>
+                    <motion.p 
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -50 }}
+                      transition={{ duration: 0.4, ease: "easeOut", delay: 0.1 }}
+                      className="text-xs md:text-sm text-[var(--color-muted)] leading-relaxed line-clamp-3"
+                    >
                       {SHOWCASE_SLIDES[currentSlideIndex].description}
-                    </p>
+                    </motion.p>
                   </motion.div>
                 </AnimatePresence>
 
