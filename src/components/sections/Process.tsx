@@ -11,37 +11,37 @@ const processSteps = [
     number: "01",
     title: "Discovery",
     description: "We dive deep into your business goals, target audience, and technical requirements.",
-    image: "https://images.unsplash.com/photo-1512758684818-1a4734ea8cb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     number: "02",
     title: "Planning",
     description: "Creating comprehensive architecture, timelines, and establishing project milestones.",
-    image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     number: "03",
     title: "Design",
     description: "Crafting wireframes, prototypes, and high-fidelity UI that aligns with your brand.",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     number: "04",
     title: "Development",
     description: "Writing clean, scalable code using modern technologies and best practices.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     number: "05",
     title: "Testing",
     description: "Rigorous QA, automated testing, and performance optimization before launch.",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
   {
     number: "06",
     title: "Launch",
     description: "Seamless deployment, monitoring, and transition to ongoing support phases.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   },
 ];
 
