@@ -60,26 +60,31 @@ export function WhyChoose() {
             </div>
           </AnimateOnScroll>
 
-          <AnimateOnScroll variants={staggerContainer}>
-            <div className="grid sm:grid-cols-2 gap-8">
+          <AnimateOnScroll variants={fadeUp}>
+            <div className="grid sm:grid-cols-2 rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-background)] shadow-sm">
               {pillars.map((pillar, index) => (
-                <AnimateOnScroll key={pillar.title} variants={fadeUp}>
-                  <div className="flex flex-col">
-                    <div className="w-10 h-10 rounded bg-[var(--color-accent)]/10 flex items-center justify-center mb-4">
-                      <pillar.icon className="w-5 h-5 text-[var(--color-accent)]" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-[var(--color-primary)] mb-2">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-[var(--color-muted)] mb-4 text-balance">
-                      {pillar.description}
-                    </p>
-                    <div className="mt-auto pt-4 border-t border-[var(--color-border)]">
-                      <div className="font-semibold text-[var(--color-primary)]">{pillar.stat}</div>
-                      <div className="text-xs text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
-                    </div>
+                <div 
+                  key={pillar.title} 
+                  className={`p-6 lg:p-8 flex flex-col bg-[var(--color-surface)] hover:bg-[var(--color-background)] transition-colors duration-300 border-[var(--color-border)] ${
+                    index < 2 ? 'border-b' : ''
+                  } ${
+                    index % 2 === 0 ? 'border-r' : ''
+                  }`}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-5">
+                    <pillar.icon className="w-6 h-6 text-[var(--color-accent)]" />
                   </div>
-                </AnimateOnScroll>
+                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
+                    {pillar.title}
+                  </h3>
+                  <p className="text-[var(--color-muted)] mb-6 text-sm leading-relaxed flex-grow">
+                    {pillar.description}
+                  </p>
+                  <div className="pt-4 border-t border-[var(--color-border)]/50 mt-auto">
+                    <div className="text-2xl font-bold text-[var(--color-primary)] mb-1">{pillar.stat}</div>
+                    <div className="text-[10px] font-bold text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
+                  </div>
+                </div>
               ))}
             </div>
           </AnimateOnScroll>
