@@ -35,8 +35,8 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-[var(--color-background)]/80 backdrop-blur-md shadow-[var(--shadow-nav)] py-4"
-          : "bg-transparent py-6"
+          ? "bg-[var(--color-background)]/80 backdrop-blur-md shadow-[var(--shadow-nav)] py-2"
+          : "bg-transparent py-3"
       )}
     >
       <Container>
