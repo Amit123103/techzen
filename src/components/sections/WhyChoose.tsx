@@ -85,30 +85,34 @@ export function WhyChoose() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll variants={fadeUp}>
-              <div className="grid sm:grid-cols-2 rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-background)] shadow-sm">
-                {pillars.map((pillar, index) => (
-                  <div 
-                    key={pillar.title} 
-                    className={`p-6 flex flex-col bg-[var(--color-surface)] hover:bg-[var(--color-background)] transition-colors duration-300 border-[var(--color-border)] ${
-                      index < 2 ? 'border-b' : ''
-                    } ${
-                      index % 2 === 0 ? 'border-r' : ''
-                    }`}
-                  >
-                    <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-4">
-                      <pillar.icon className="w-5 h-5 text-[var(--color-accent)]" />
-                    </div>
-                    <h3 className="text-lg font-bold text-[var(--color-primary)] mb-2">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-[var(--color-muted)] mb-4 text-xs leading-relaxed flex-grow">
-                      {pillar.description}
-                    </p>
-                    <div className="pt-3 border-t border-[var(--color-border)]/50 mt-auto">
-                      <div className="text-xl font-bold text-[var(--color-primary)] mb-1">{pillar.stat}</div>
-                      <div className="text-[9px] font-bold text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
-                    </div>
+            <AnimateOnScroll variants={fadeUp} className="w-full overflow-hidden relative select-none">
+              {/* Fading edges for the marquee */}
+              <div className="absolute inset-y-0 left-0 w-8 md:w-16 bg-gradient-to-r from-[var(--color-surface)] to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute inset-y-0 right-0 w-8 md:w-16 bg-gradient-to-l from-[var(--color-surface)] to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex gap-6 w-max animate-scroll-right">
+                {[...Array(2)].map((_, i) => (
+                  <div key={i} className="flex gap-6 items-stretch px-3">
+                    {pillars.map((pillar) => (
+                      <div 
+                        key={pillar.title} 
+                        className="w-[280px] p-6 flex flex-col bg-[var(--color-background)] hover:bg-[var(--color-background)]/80 rounded-2xl border border-[var(--color-border)] shadow-sm hover:shadow-md hover:border-[var(--color-accent)]/50 transition-all duration-300"
+                      >
+                        <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-4">
+                          <pillar.icon className="w-5 h-5 text-[var(--color-accent)]" />
+                        </div>
+                        <h3 className="text-lg font-bold text-[var(--color-primary)] mb-2">
+                          {pillar.title}
+                        </h3>
+                        <p className="text-[var(--color-muted)] mb-4 text-xs leading-relaxed flex-grow whitespace-normal">
+                          {pillar.description}
+                        </p>
+                        <div className="pt-3 border-t border-[var(--color-border)]/50 mt-auto">
+                          <div className="text-xl font-bold text-[var(--color-primary)] mb-1">{pillar.stat}</div>
+                          <div className="text-[9px] font-bold text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 ))}
               </div>
