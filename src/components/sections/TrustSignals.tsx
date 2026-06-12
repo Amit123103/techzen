@@ -15,9 +15,15 @@ export function TrustSignals() {
     <section className="py-12 border-y border-[var(--color-border)] bg-[var(--color-background)]">
       <Container>
         <AnimateOnScroll variants={staggerContainer}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 divide-x-0 md:divide-x divide-[var(--color-border)]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-0">
             {stats.map((stat, index) => (
-              <AnimateOnScroll key={index} variants={fadeUp} className="flex flex-col items-center justify-center text-center px-2">
+              <AnimateOnScroll 
+                key={index} 
+                variants={fadeUp} 
+                className={`relative flex flex-col items-center justify-center text-center px-2 md:px-6 
+                  ${index !== stats.length - 1 ? "md:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-16 md:after:w-px md:after:bg-[var(--color-border)]" : ""}
+                `}
+              >
                 <div className="text-[var(--color-accent)] mb-3 bg-[var(--color-surface)] p-2 rounded-full border border-[var(--color-border)]">
                   {stat.icon}
                 </div>
