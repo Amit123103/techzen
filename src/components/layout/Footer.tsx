@@ -1,23 +1,31 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 
 const footerNavigation = {
   services: [
-    { name: "Custom Software", href: "#" },
-    { name: "Web Development", href: "#" },
+    { name: "Custom Software", href: "/services/custom-software" },
+    { name: "Web Development", href: "/services/web-development" },
     { name: "Mobile Apps", href: "#" },
     { name: "UI/UX Design", href: "#" },
-    { name: "Cloud Solutions", href: "#" },
+    { name: "Cloud Migration", href: "#" },
   ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "About Us", href: "/about" },
+    { name: "Careers", href: "/careers" },
+    { name: "Our Team", href: "/about#team" },
+    { name: "Contact", href: "#contact" },
+  ],
+  resources: [
+    { name: "Blog", href: "/blog" },
+    { name: "Case Studies", href: "/case-studies" },
+    { name: "Webinars", href: "#" },
+    { name: "Help Center", href: "#" },
   ],
   legal: [
     { name: "Privacy Policy", href: "#" },
     { name: "Terms of Service", href: "#" },
+    { name: "Cookie Policy", href: "#" },
   ],
   social: [
     {
@@ -60,52 +68,54 @@ const footerNavigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] pt-16 pb-8">
+    <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] pt-24 pb-8">
       <Container>
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="xl:grid xl:grid-cols-4 xl:gap-12">
+          
           <div className="space-y-8 xl:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <div className="h-8 w-8 rounded bg-[var(--color-accent)] flex items-center justify-center">
-                <span className="text-white font-bold text-lg leading-none">T</span>
+              <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center transition-colors">
+                <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
               </div>
-              <span className="text-xl font-bold tracking-tight text-[var(--color-primary)]">
+              <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">
                 TechZen
               </span>
             </Link>
             <p className="text-sm leading-6 text-[var(--color-muted)] max-w-xs">
-              Building digital products that drive growth. We craft premium software solutions for modern businesses.
+              Building scalable, enterprise-grade software solutions for modern businesses outgrowing their tech stack.
             </p>
             <div className="flex space-x-6">
               {footerNavigation.social.map((item) => (
-                <a key={item.name} href={item.href} className="text-[var(--color-muted)] hover:text-[var(--color-text)]">
+                <a key={item.name} href={item.href} className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />
                 </a>
               ))}
             </div>
           </div>
+          
           <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-[var(--color-text)]">Services</h3>
+                <h3 className="text-sm font-bold tracking-wider uppercase text-[var(--color-text)]">Services</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerNavigation.services.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
+                      <Link href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-[var(--color-text)]">Company</h3>
+                <h3 className="text-sm font-bold tracking-wider uppercase text-[var(--color-text)]">Company</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerNavigation.company.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
+                      <Link href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -113,26 +123,64 @@ export function Footer() {
             </div>
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-sm font-semibold leading-6 text-[var(--color-text)]">Legal</h3>
+                <h3 className="text-sm font-bold tracking-wider uppercase text-[var(--color-text)]">Resources</h3>
+                <ul role="list" className="mt-6 space-y-4">
+                  {footerNavigation.resources.map((item) => (
+                    <li key={item.name}>
+                      <Link href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-10 md:mt-0">
+                <h3 className="text-sm font-bold tracking-wider uppercase text-[var(--color-text)]">Legal</h3>
                 <ul role="list" className="mt-6 space-y-4">
                   {footerNavigation.legal.map((item) => (
                     <li key={item.name}>
-                      <a href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
+                      <Link href={item.href} className="text-sm leading-6 text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors">
                         {item.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
           </div>
+
+          <div className="mt-16 xl:mt-0 xl:col-span-1">
+            <h3 className="text-sm font-bold tracking-wider uppercase text-[var(--color-text)] mb-6">Subscribe to our newsletter</h3>
+            <p className="text-sm text-[var(--color-muted)] mb-4">
+              Get the latest insights on enterprise software architecture and engineering leadership.
+            </p>
+            <form className="mt-2 sm:flex sm:max-w-md xl:max-w-none flex-col gap-3">
+              <label htmlFor="email-address" className="sr-only">Email address</label>
+              <input
+                type="email"
+                name="email-address"
+                id="email-address"
+                autoComplete="email"
+                required
+                className="w-full min-w-0 appearance-none rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] px-4 py-3 text-base text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
+                placeholder="Enter your email"
+              />
+              <div className="mt-3 rounded-md sm:mt-0 sm:shrink-0">
+                <Button type="submit" className="w-full">
+                  Subscribe
+                </Button>
+              </div>
+            </form>
+          </div>
+          
         </div>
+        
         <div className="mt-16 border-t border-[var(--color-border)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs leading-5 text-[var(--color-muted)]">
-            &copy; {new Date().getFullYear()} TechZen, Inc. All rights reserved.
+          <p className="text-sm leading-5 text-[var(--color-muted)] font-medium">
+            &copy; {new Date().getFullYear()} TechZen Enterprise. All rights reserved.
           </p>
-          <div className="flex gap-4 text-xs text-[var(--color-muted)]">
-            <span>Made with precision.</span>
+          <div className="flex gap-4 text-sm font-medium text-[var(--color-muted)]">
+            <span className="flex items-center gap-2">Built for scale. Designed for humans.</span>
           </div>
         </div>
       </Container>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
 
 const navigation = [
@@ -47,10 +48,10 @@ export function Navbar() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
               <span className="sr-only">TechZen</span>
-              <div className="h-8 w-8 rounded bg-[var(--color-accent)] flex items-center justify-center">
-                <span className="text-white font-bold text-lg leading-none">T</span>
+              <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center transition-colors">
+                <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
               </div>
-              <span className="text-xl font-bold tracking-tight text-[var(--color-primary)]">
+              <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">
                 TechZen
               </span>
             </Link>
@@ -62,7 +63,7 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium leading-6 text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+                className="text-sm font-medium leading-6 text-[var(--color-text)] hover:text-[var(--color-muted)] transition-colors"
               >
                 {item.name}
               </Link>
@@ -70,12 +71,14 @@ export function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
+            <ThemeToggle />
             <Button size="sm">Book Consultation</Button>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden items-center gap-2">
+            <ThemeToggle />
             <button
               type="button"
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-[var(--color-text)]"
@@ -105,10 +108,10 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">TechZen</span>
-              <div className="h-8 w-8 rounded bg-[var(--color-accent)] flex items-center justify-center">
-                <span className="text-white font-bold text-lg leading-none">T</span>
+              <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center transition-colors">
+                <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
               </div>
-              <span className="text-xl font-bold tracking-tight text-[var(--color-primary)]">
+              <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">
                 TechZen
               </span>
             </Link>
