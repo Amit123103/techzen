@@ -14,8 +14,8 @@ export default function Home() {
       <Hero />
       <TrustSignals />
       <Services />
-      <ImageShowcase />
       <WhyChoose />
+      <ImageShowcase />
       <Process />
       <Testimonials />
       <Team />
