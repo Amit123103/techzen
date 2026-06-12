@@ -60,7 +60,7 @@ export function Hero() {
         </AnimateOnScroll>
 
         <AnimateOnScroll variants={fadeUp} delay={0.4}>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-12">
             <Button 
               size="md" 
               className="w-full sm:w-auto shadow-md"
@@ -76,6 +76,41 @@ export function Hero() {
             >
               View Services
             </Button>
+          </div>
+        </AnimateOnScroll>
+
+        {/* Scrolling Marquees */}
+        <AnimateOnScroll variants={fadeUp} delay={0.45} className="w-full mb-16 overflow-hidden relative select-none">
+          {/* Fading edges for the marquee */}
+          <div className="absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-background)] to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-background)] to-transparent z-10 pointer-events-none"></div>
+          
+          <div className="flex flex-col gap-4">
+            {/* Top row - Right to Left */}
+            <div className="flex gap-4 w-max animate-scroll-left">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex gap-4 items-center px-2">
+                  {["React", "Next.js", "TypeScript", "Tailwind CSS", "Node.js", "PostgreSQL", "GraphQL", "AWS", "Figma", "Docker"].map((tech) => (
+                    <div key={tech} className="px-4 py-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-sm font-medium text-[var(--color-secondary)] whitespace-nowrap shadow-sm">
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            
+            {/* Bottom row - Left to Right */}
+            <div className="flex gap-4 w-max animate-scroll-right">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex gap-4 items-center px-2">
+                  {["Vercel", "Stripe", "Prisma", "Supabase", "Redis", "Framer Motion", "Jest", "Cypress", "OpenAI", "Cloudflare"].map((tech) => (
+                    <div key={tech} className="px-4 py-2 rounded-lg bg-[var(--color-surface)] border border-[var(--color-border)] text-sm font-medium text-[var(--color-secondary)] whitespace-nowrap shadow-sm">
+                      {tech}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
         </AnimateOnScroll>
 
