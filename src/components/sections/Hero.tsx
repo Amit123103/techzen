@@ -54,10 +54,19 @@ export function Hero() {
 
         <AnimateOnScroll variants={fadeUp} delay={0.4}>
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-16">
-            <Button size="lg" className="w-full sm:w-auto shadow-md">
+            <Button 
+              size="md" 
+              className="w-full sm:w-auto shadow-md"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Start a Project
             </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto border-[var(--color-border)] bg-[var(--color-background)]">
+            <Button 
+              size="md" 
+              variant="outline" 
+              className="w-full sm:w-auto border-[var(--color-border)] bg-[var(--color-background)]"
+              onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               View Services
             </Button>
           </div>
