@@ -1,7 +1,10 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
-import { staggerContainer, fadeUp } from "@/lib/animations";
+import { fadeUp } from "@/lib/animations";
 import { Users, Zap, ShieldCheck, HeartHandshake } from "lucide-react";
 
 const pillars = [
@@ -35,60 +38,130 @@ const pillars = [
   },
 ];
 
-export function WhyChoose() {
-  return (
-    <section className="py-24 lg:py-32 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
-      <Container>
-        <div className="flex flex-col gap-12 lg:gap-16">
-          <AnimateOnScroll className="flex flex-col items-center text-center max-w-3xl mx-auto">
-            <SectionHeading
-              eyebrow="Why Choose TechZen"
-              title="Why work with us?"
-              description="We're builders at heart. We don't just write code; we care about the success of your business. Here's what you can expect when you partner with us."
-              align="center"
-              className="mb-8"
-            />
-            <div className="flex justify-center items-center gap-6 mt-4">
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">98%</span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Client Retention</span>
-              </div>
-              <div className="w-px h-12 bg-[var(--color-border)] mx-2" />
-              <div className="flex flex-col">
-                <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">200+</span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Projects Shipped</span>
-              </div>
-            </div>
-          </AnimateOnScroll>
+const galleryImages = [
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+  "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+];
 
-          <AnimateOnScroll variants={fadeUp}>
-            <div className="grid sm:grid-cols-2 rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-background)] shadow-sm">
-              {pillars.map((pillar, index) => (
-                <div 
-                  key={pillar.title} 
-                  className={`p-6 lg:p-8 flex flex-col bg-[var(--color-surface)] hover:bg-[var(--color-background)] transition-colors duration-300 border-[var(--color-border)] ${
-                    index < 2 ? 'border-b' : ''
-                  } ${
-                    index % 2 === 0 ? 'border-r' : ''
-                  }`}
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-5">
-                    <pillar.icon className="w-6 h-6 text-[var(--color-accent)]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[var(--color-primary)] mb-3">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-[var(--color-muted)] mb-6 text-sm leading-relaxed flex-grow">
-                    {pillar.description}
-                  </p>
-                  <div className="pt-4 border-t border-[var(--color-border)]/50 mt-auto">
-                    <div className="text-2xl font-bold text-[var(--color-primary)] mb-1">{pillar.stat}</div>
-                    <div className="text-[10px] font-bold text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
-                  </div>
+export function WhyChoose() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 2000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className="py-24 lg:py-32 bg-[var(--color-surface)] border-y border-[var(--color-border)] overflow-hidden">
+      <Container>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Content & Bento Grid */}
+          <div className="flex flex-col gap-12">
+            <AnimateOnScroll className="flex flex-col items-start text-left max-w-xl">
+              <SectionHeading
+                eyebrow="Why Choose TechZen"
+                title="Why work with us?"
+                description="We're builders at heart. We don't just write code; we care about the success of your business. Here's what you can expect when you partner with us."
+                align="left"
+                className="mb-8"
+              />
+              <div className="flex justify-start items-center gap-6 mt-4">
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">98%</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Client Retention</span>
                 </div>
+                <div className="w-px h-12 bg-[var(--color-border)] mx-2" />
+                <div className="flex flex-col">
+                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">200+</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Projects Shipped</span>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll variants={fadeUp}>
+              <div className="grid sm:grid-cols-2 rounded-2xl border border-[var(--color-border)] overflow-hidden bg-[var(--color-background)] shadow-sm">
+                {pillars.map((pillar, index) => (
+                  <div 
+                    key={pillar.title} 
+                    className={`p-6 flex flex-col bg-[var(--color-surface)] hover:bg-[var(--color-background)] transition-colors duration-300 border-[var(--color-border)] ${
+                      index < 2 ? 'border-b' : ''
+                    } ${
+                      index % 2 === 0 ? 'border-r' : ''
+                    }`}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center mb-4">
+                      <pillar.icon className="w-5 h-5 text-[var(--color-accent)]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-[var(--color-primary)] mb-2">
+                      {pillar.title}
+                    </h3>
+                    <p className="text-[var(--color-muted)] mb-4 text-xs leading-relaxed flex-grow">
+                      {pillar.description}
+                    </p>
+                    <div className="pt-3 border-t border-[var(--color-border)]/50 mt-auto">
+                      <div className="text-xl font-bold text-[var(--color-primary)] mb-1">{pillar.stat}</div>
+                      <div className="text-[9px] font-bold text-[var(--color-muted)] uppercase tracking-wider">{pillar.statLabel}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AnimateOnScroll>
+          </div>
+
+          {/* Right Column: Orbital Image Carousel */}
+          <div className="hidden lg:flex justify-center items-center relative h-[600px]">
+            
+            {/* Central Hub */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-4 border-[var(--color-background)] shadow-2xl z-20 overflow-hidden bg-[var(--color-surface)]">
+              {galleryImages.map((src, idx) => (
+                <img 
+                  key={src}
+                  src={src}
+                  alt="Team collaboration"
+                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                    idx === activeIndex ? "opacity-100 scale-100" : "opacity-0 scale-110"
+                  }`}
+                />
               ))}
             </div>
-          </AnimateOnScroll>
+
+            {/* Orbiting Track */}
+            <div className="relative w-[500px] h-[500px] rounded-full border border-dashed border-[var(--color-border)] animate-spin-slow z-10">
+              {galleryImages.map((src, index) => {
+                const angle = index * (360 / galleryImages.length);
+                return (
+                  <div 
+                    key={src}
+                    className="absolute top-1/2 left-1/2 w-0 h-0"
+                    style={{ transform: `rotate(${angle}deg) translateY(-250px)` }}
+                  >
+                    <div style={{ transform: `rotate(-${angle}deg)` }}>
+                      <div className="w-20 h-20 -ml-10 -mt-10 animate-spin-slow-reverse">
+                        <div 
+                          className={`w-full h-full rounded-full border-4 shadow-lg overflow-hidden transition-all duration-500 cursor-pointer ${
+                            index === activeIndex 
+                              ? "border-[var(--color-primary)] scale-125 z-30" 
+                              : "border-[var(--color-background)] opacity-60 hover:opacity-100 z-20"
+                          }`}
+                          onClick={() => setActiveIndex(index)}
+                        >
+                          <img src={src} alt="Thumbnail" className="w-full h-full object-cover" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+          </div>
         </div>
       </Container>
     </section>
