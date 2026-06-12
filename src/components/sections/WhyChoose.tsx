@@ -39,15 +39,16 @@ export function WhyChoose() {
   return (
     <section className="py-24 lg:py-32 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
       <Container>
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          <AnimateOnScroll>
+        <div className="flex flex-col gap-12 lg:gap-16">
+          <AnimateOnScroll className="flex flex-col items-center text-center max-w-3xl mx-auto">
             <SectionHeading
               eyebrow="Why Choose TechZen"
               title="Why work with us?"
               description="We're builders at heart. We don't just write code; we care about the success of your business. Here's what you can expect when you partner with us."
+              align="center"
               className="mb-8"
             />
-            <div className="flex gap-6 mt-4">
+            <div className="flex justify-center items-center gap-6 mt-4">
               <div className="flex flex-col">
                 <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">98%</span>
                 <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Client Retention</span>
