@@ -8,32 +8,32 @@ import { Code2, Smartphone, Layout, Cloud, Bot, Palette } from "lucide-react";
 const services = [
   {
     title: "Custom Software",
-    description: "Enterprise-grade applications built from scratch to solve your unique business challenges with scalable architecture.",
+    description: "We build software that actually works the way your team does. No bloated features, just tools designed to fix your specific bottlenecks.",
     icon: Code2,
   },
   {
     title: "Web Development",
-    description: "High-performance web applications using modern frameworks like React and Next.js for seamless user experiences.",
+    description: "Fast, reliable websites built with modern tools. We focus on clean code so your site stays quick and doesn't break.",
     icon: Layout,
   },
   {
     title: "Mobile App Development",
-    description: "Native and cross-platform mobile experiences that engage users on iOS and Android devices.",
+    description: "Apps that your customers will actually enjoy using, whether they're on an iPhone or an Android.",
     icon: Smartphone,
   },
   {
     title: "UI/UX Design",
-    description: "Human-centered design that creates intuitive, beautiful interfaces focused on conversion and usability.",
+    description: "We design interfaces that make sense. If your users need a manual to figure out your software, we haven't done our job.",
     icon: Palette,
   },
   {
     title: "Cloud Solutions",
-    description: "Robust cloud infrastructure and migration services using AWS, Azure, or Google Cloud for ultimate reliability.",
+    description: "We set up your servers and infrastructure so they don't crash when you finally get that big spike in traffic.",
     icon: Cloud,
   },
   {
     title: "AI & Automation",
-    description: "Intelligent systems that streamline operations, reduce manual work, and unlock new capabilities.",
+    description: "We write scripts to handle the boring, repetitive tasks so your team can focus on the real work.",
     icon: Bot,
   },
 ];
@@ -63,7 +63,7 @@ export function Services() {
                     <CardTitle>{service.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-sm leading-relaxed text-[var(--color-muted)]">
                       {service.description}
                     </CardDescription>
                   </CardContent>
