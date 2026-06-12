@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
-import { Code2, Smartphone, Layout, Cloud, Bot, Palette } from "lucide-react";
+import { Code2, Smartphone, Layout, Cloud, Bot, Palette, Check } from "lucide-react";
 
 const services = [
   {
@@ -53,103 +53,128 @@ export function Services() {
   return (
     <section id="services" className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-[var(--color-background)] overflow-hidden">
       <Container>
-        <AnimateOnScroll>
-          <SectionHeading
-            eyebrow="Our Services"
-            title="What we do best"
-            description="We don't do everything, but what we do, we do really well. Here's how we can help you build your next idea."
-            align="center"
-            className="mb-12 md:mb-16 [&_h2]:text-xl [&_h2]:md:text-2xl [&_p]:text-sm [&_p]:md:text-base max-w-2xl mx-auto"
-          />
-        </AnimateOnScroll>
-
-        {/* Mobile Grid View (Hidden on large screens) */}
-        <AnimateOnScroll variants={staggerContainer} className="lg:hidden">
-          <div className="grid md:grid-cols-2 gap-6">
-            {services.map((service) => (
-              <AnimateOnScroll key={service.title} variants={fadeUp}>
-                <Card className="h-full group relative overflow-hidden border-[var(--color-border)] shadow-sm hover:shadow-xl transition-all duration-500">
-                  <div className="absolute inset-0 z-0">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
-                      className="w-full h-full object-cover opacity-10 group-hover:opacity-30 transition-all duration-700 ease-in-out" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-[var(--color-surface)]/90 to-[var(--color-surface)]/60"></div>
-                  </div>
-                  <CardHeader className="relative z-10 pt-8">
-                    <div className="w-12 h-12 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center mb-6 shadow-sm group-hover:bg-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors duration-500">
-                      <service.icon className="w-6 h-6 text-[var(--color-accent)] group-hover:text-white transition-colors duration-500" />
-                    </div>
-                    <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="relative z-10 pb-8">
-                    <CardDescription className="text-sm leading-relaxed text-[var(--color-muted)] group-hover:text-[var(--color-primary)]/80 transition-colors duration-300">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </AnimateOnScroll>
-
-        {/* Desktop Orbital View (Hidden on mobile) */}
-        <div className="hidden lg:flex justify-center items-center py-20 relative min-h-[700px]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Central Information Hub */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-2xl flex flex-col items-center justify-center p-8 text-center z-20 overflow-hidden transition-all duration-500 group cursor-pointer hover:scale-105">
-            <div className="absolute inset-0 z-0 opacity-10 transition-opacity duration-500 group-hover:opacity-20">
-               <img key={activeService.title} src={activeService.image} alt={activeService.title} className="w-full h-full object-cover animate-fade-in" />
-            </div>
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="w-16 h-16 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center mb-4 shadow-sm">
-                <activeService.icon className="w-8 h-8 text-[var(--color-accent)]" />
+          {/* Left Column: Text & Details */}
+          <div className="flex flex-col gap-8">
+            <AnimateOnScroll className="flex flex-col items-start text-left">
+              <SectionHeading
+                eyebrow="Our Services"
+                title="What we do best"
+                description="We don't just write code; we solve complex problems. We build custom software solutions tailored perfectly to your unique business bottlenecks. Our team of expert developers, designers, and strategists work closely with you from concept to deployment. Whether you need a sleek mobile app, a robust web platform, or intelligent AI automation, we have the skills and the track record to deliver excellence."
+                align="left"
+                className="[&_h2]:text-3xl [&_h2]:md:text-4xl [&_p]:text-sm [&_p]:md:text-base"
+              />
+              <div className="mt-8 flex flex-col gap-5">
+                {[
+                  "Tailored, custom solutions",
+                  "End-to-end development cycle",
+                  "Focus on scalable architecture",
+                  "User-centric UI/UX design"
+                ].map((point, i) => (
+                  <div key={i} className="flex items-center gap-4 group">
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center shadow-sm group-hover:bg-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors duration-300">
+                      <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] group-hover:bg-white transition-colors duration-300" />
+                    </div>
+                    <span className="font-semibold text-[var(--color-primary)]">{point}</span>
+                  </div>
+                ))}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-[var(--color-primary)]">{activeService.title}</h3>
-              <p className="text-sm text-[var(--color-muted)] leading-relaxed">{activeService.description}</p>
-            </div>
+            </AnimateOnScroll>
           </div>
 
-          {/* Orbiting Track */}
-          <div className="relative w-[600px] h-[600px] rounded-full border border-dashed border-[var(--color-border)] animate-spin-slow group z-10 hover:border-solid transition-all duration-500">
-            {services.map((service, index) => {
-               const angle = index * 60;
-               return (
-                 <div 
-                   key={service.title}
-                   className="absolute top-1/2 left-1/2 w-0 h-0"
-                   style={{ transform: `rotate(${angle}deg) translateY(-300px)` }}
-                 >
-                   <div style={{ transform: `rotate(-${angle}deg)` }}>
-                     <div 
-                       className="w-32 h-32 -ml-16 -mt-16 animate-spin-slow-reverse group-hover:[animation-play-state:paused]"
-                       onMouseEnter={() => setActiveService(service)}
-                     >
-                        <div className={`w-full h-full rounded-2xl border-2 shadow-lg flex flex-col items-center justify-center cursor-pointer transition-all duration-500 relative overflow-hidden ${
-                          activeService.title === service.title 
-                            ? 'bg-[var(--color-primary)] border-[var(--color-primary)] scale-110 z-30 shadow-2xl' 
-                            : 'bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-accent)] hover:shadow-xl z-20'
-                        }`}>
-                           <div className="relative z-10 flex flex-col items-center px-2">
-                             <service.icon className={`w-8 h-8 mb-2 transition-colors duration-500 ${
-                               activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-accent)]'
-                             }`} />
-                             <span className={`text-xs font-bold text-center leading-tight transition-colors duration-500 ${
-                               activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-primary)]'
-                             }`}>
-                               {service.title}
-                             </span>
-                           </div>
+          {/* Right Column: Cards & Orbit */}
+          <div className="flex flex-col">
+            
+            {/* Mobile Grid View (Hidden on large screens) */}
+            <AnimateOnScroll variants={staggerContainer} className="lg:hidden">
+              <div className="grid sm:grid-cols-2 gap-6">
+                {services.map((service) => (
+                  <AnimateOnScroll key={service.title} variants={fadeUp}>
+                    <Card className="h-full group relative overflow-hidden border-[var(--color-border)] shadow-sm hover:shadow-xl transition-all duration-500">
+                      <div className="absolute inset-0 z-0">
+                        <img 
+                          src={service.image} 
+                          alt={service.title} 
+                          className="w-full h-full object-cover opacity-10 group-hover:opacity-30 transition-all duration-700 ease-in-out" 
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-[var(--color-surface)]/90 to-[var(--color-surface)]/60"></div>
+                      </div>
+                      <CardHeader className="relative z-10 pt-8">
+                        <div className="w-12 h-12 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center mb-6 shadow-sm group-hover:bg-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors duration-500">
+                          <service.icon className="w-6 h-6 text-[var(--color-accent)] group-hover:text-white transition-colors duration-500" />
                         </div>
+                        <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+                      </CardHeader>
+                      <CardContent className="relative z-10 pb-8">
+                        <CardDescription className="text-sm leading-relaxed text-[var(--color-muted)] group-hover:text-[var(--color-primary)]/80 transition-colors duration-300">
+                          {service.description}
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+                  </AnimateOnScroll>
+                ))}
+              </div>
+            </AnimateOnScroll>
+
+            {/* Desktop Orbital View (Hidden on mobile) */}
+            <div className="hidden lg:flex justify-center items-center py-20 relative min-h-[600px]">
+              
+              {/* Central Information Hub */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-2xl flex flex-col items-center justify-center p-6 text-center z-20 overflow-hidden transition-all duration-500 group cursor-pointer hover:scale-105">
+                <div className="absolute inset-0 z-0 opacity-10 transition-opacity duration-500 group-hover:opacity-20">
+                   <img key={activeService.title} src={activeService.image} alt={activeService.title} className="w-full h-full object-cover animate-fade-in" />
+                </div>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center mb-3 shadow-sm">
+                    <activeService.icon className="w-7 h-7 text-[var(--color-accent)]" />
+                  </div>
+                  <h3 className="text-lg font-bold mb-2 text-[var(--color-primary)]">{activeService.title}</h3>
+                  <p className="text-xs text-[var(--color-muted)] leading-relaxed">{activeService.description}</p>
+                </div>
+              </div>
+
+              {/* Orbiting Track */}
+              <div className="relative w-[500px] h-[500px] rounded-full border border-dashed border-[var(--color-border)] animate-spin-slow group z-10 hover:border-solid transition-all duration-500">
+                {services.map((service, index) => {
+                   const angle = index * 60;
+                   return (
+                     <div 
+                       key={service.title}
+                       className="absolute top-1/2 left-1/2 w-0 h-0"
+                       style={{ transform: `rotate(${angle}deg) translateY(-250px)` }}
+                     >
+                       <div style={{ transform: `rotate(-${angle}deg)` }}>
+                         <div 
+                           className="w-28 h-28 -ml-14 -mt-14 animate-spin-slow-reverse group-hover:[animation-play-state:paused]"
+                           onMouseEnter={() => setActiveService(service)}
+                         >
+                            <div className={`w-full h-full rounded-2xl border-2 shadow-lg flex flex-col items-center justify-center cursor-pointer transition-all duration-500 relative overflow-hidden ${
+                              activeService.title === service.title 
+                                ? 'bg-[var(--color-primary)] border-[var(--color-primary)] scale-110 z-30 shadow-2xl' 
+                                : 'bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-accent)] hover:shadow-xl z-20'
+                            }`}>
+                               <div className="relative z-10 flex flex-col items-center px-2">
+                                 <service.icon className={`w-6 h-6 mb-2 transition-colors duration-500 ${
+                                   activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-accent)]'
+                                 }`} />
+                                 <span className={`text-[10px] font-bold text-center leading-tight transition-colors duration-500 ${
+                                   activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-primary)]'
+                                 }`}>
+                                   {service.title}
+                                 </span>
+                               </div>
+                            </div>
+                         </div>
+                       </div>
                      </div>
-                   </div>
-                 </div>
-               );
-            })}
+                   );
+                })}
+              </div>
+            </div>
+
           </div>
         </div>
-
       </Container>
     </section>
   );
