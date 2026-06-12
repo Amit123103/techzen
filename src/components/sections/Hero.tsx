@@ -26,9 +26,16 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 bg-[var(--color-background)] overflow-hidden">
+    <section className="relative pt-28 pb-24 lg:pt-36 lg:pb-32 bg-[var(--color-background)] overflow-hidden flex flex-col justify-center min-h-[90vh]">
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] z-0"></div>
+      
+      {/* Premium Glowing Blobs */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-[400px] opacity-30 pointer-events-none mix-blend-normal z-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[var(--color-accent)] rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
+        <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-[#E5989B] rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#D58386] rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-4000"></div>
+      </div>
 
       <Container className="relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
         <AnimateOnScroll variants={fadeUp} delay={0.1}>
