@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
 import { Code2, Smartphone, Layout, Cloud, Bot, Palette, Check } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const services = [
   {
@@ -49,10 +50,28 @@ const services = [
 
 export function Services() {
   const [activeService, setActiveService] = useState(services[0]);
+  const sectionRef = useRef(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+  
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   return (
-    <section id="services" className="pt-12 lg:pt-16 pb-12 lg:pb-16 bg-[var(--color-background)] overflow-hidden">
-      <Container>
+    <section ref={sectionRef} id="services" className="relative pt-12 lg:pt-16 pb-12 lg:pb-16 bg-[var(--color-background)] overflow-hidden">
+      {/* Animated Parallax Background Elements */}
+      <motion.div 
+        style={{ y: yParallax }} 
+        className="absolute top-0 right-0 w-[800px] h-[800px] bg-[var(--color-surface)] rounded-full blur-[100px] opacity-50 pointer-events-none -mr-40 -mt-40 z-0"
+      />
+      <motion.div 
+        style={{ y: useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]) }} 
+        className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[var(--color-accent)] rounded-full blur-[120px] opacity-5 pointer-events-none -ml-40 -mb-40 z-0"
+      />
+
+      <Container className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Text & Details */}

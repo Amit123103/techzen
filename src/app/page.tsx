@@ -3,6 +3,7 @@ import { TrustSignals } from "@/components/sections/TrustSignals";
 import { Services } from "@/components/sections/Services";
 import { ImageShowcase } from "@/components/sections/ImageShowcase";
 import { WhyChoose } from "@/components/sections/WhyChoose";
+import { MarqueeDivider } from "@/components/ui/MarqueeDivider";
 import { Process } from "@/components/sections/Process";
 import { Industries } from "@/components/sections/Industries";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Hero />
       <Services />
+      <MarqueeDivider />
       <WhyChoose />
       <ImageShowcase />
       <Process />
