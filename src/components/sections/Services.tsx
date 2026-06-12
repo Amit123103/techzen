@@ -7,7 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
 import { Code2, Smartphone, Layout, Cloud, Bot, Palette, Check } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 const services = [
   {
@@ -91,12 +91,21 @@ export function Services() {
                   "Focus on scalable architecture",
                   "User-centric UI/UX design"
                 ].map((point, i) => (
-                  <div key={i} className="flex items-center gap-4 group">
-                    <div className="w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center shadow-sm group-hover:bg-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors duration-300">
-                      <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] group-hover:bg-white transition-colors duration-300" />
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: -50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ delay: 0.2 + i * 0.15, duration: 0.5, ease: "easeOut" }}
+                    className="flex items-center gap-4 group"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] flex items-center justify-center shadow-sm group-hover:bg-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors duration-300 relative overflow-hidden">
+                      {/* Animated border effect on hover for list items */}
+                      <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_0_340deg,var(--color-accent)_360deg)] animate-[spin_2s_linear_infinite] opacity-0 group-hover:opacity-100"></div>
+                      <div className="relative z-10 w-2 h-2 rounded-full bg-[var(--color-accent)] group-hover:bg-white transition-colors duration-300" />
                     </div>
                     <span className="font-semibold text-[var(--color-primary)]">{point}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </AnimateOnScroll>
@@ -139,17 +148,63 @@ export function Services() {
             {/* Desktop Orbital View (Hidden on mobile) */}
             <div className="hidden lg:flex justify-center items-center py-20 relative min-h-[600px]">
               
-              {/* Central Information Hub */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] shadow-2xl flex flex-col items-center justify-center p-6 text-center z-20 overflow-hidden transition-all duration-500 group cursor-pointer hover:scale-105">
-                <div className="absolute inset-0 z-0 opacity-10 transition-opacity duration-500 group-hover:opacity-20">
-                   <img key={activeService.title} src={activeService.image} alt={activeService.title} className="w-full h-full object-cover animate-fade-in" />
-                </div>
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center mb-3 shadow-sm">
-                    <activeService.icon className="w-7 h-7 text-[var(--color-accent)]" />
+              {/* Central Information Hub with Colorful Animated Border */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full z-20 transition-all duration-500 group cursor-pointer hover:scale-105 flex items-center justify-center">
+                {/* Spinning colorful gradient background */}
+                <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_0deg_at_50%_50%,#ff0080,#7928ca,#ff0080)] animate-[spin_4s_linear_infinite]"></div>
+                
+                {/* Inner Content Area */}
+                <div className="absolute inset-1 rounded-full bg-[var(--color-surface)] flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+                  <div className="absolute inset-0 z-0 opacity-10 transition-opacity duration-500 group-hover:opacity-20">
+                     <AnimatePresence mode="popLayout">
+                       <motion.img 
+                         key={activeService.title} 
+                         src={activeService.image} 
+                         alt={activeService.title} 
+                         initial={{ opacity: 0 }}
+                         animate={{ opacity: 1 }}
+                         exit={{ opacity: 0 }}
+                         className="w-full h-full object-cover" 
+                       />
+                     </AnimatePresence>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 text-[var(--color-primary)]">{activeService.title}</h3>
-                  <p className="text-xs text-[var(--color-muted)] leading-relaxed">{activeService.description}</p>
+                  
+                  <AnimatePresence mode="wait">
+                    <motion.div 
+                      key={activeService.title}
+                      className="relative z-10 flex flex-col items-center w-full"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-14 h-14 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)] flex items-center justify-center mb-3 shadow-sm"
+                      >
+                        <activeService.icon className="w-7 h-7 text-[#ff0080]" />
+                      </motion.div>
+                      
+                      <motion.h3 
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 50 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="text-lg font-bold mb-2 text-[var(--color-primary)]"
+                      >
+                        {activeService.title}
+                      </motion.h3>
+                      
+                      <motion.p 
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -50 }}
+                        transition={{ duration: 0.3, ease: "easeOut", delay: 0.05 }}
+                        className="text-xs text-[var(--color-muted)] leading-relaxed"
+                      >
+                        {activeService.description}
+                      </motion.p>
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
@@ -168,14 +223,20 @@ export function Services() {
                            className="w-28 h-28 -ml-14 -mt-14 animate-spin-slow-reverse group-hover:[animation-play-state:paused]"
                            onMouseEnter={() => setActiveService(service)}
                          >
-                            <div className={`w-full h-full rounded-2xl border-2 shadow-lg flex flex-col items-center justify-center cursor-pointer transition-all duration-500 relative overflow-hidden ${
+                            <div className={`w-full h-full rounded-2xl border-2 flex flex-col items-center justify-center cursor-pointer transition-all duration-500 relative overflow-hidden ${
                               activeService.title === service.title 
                                 ? 'bg-[var(--color-primary)] border-[var(--color-primary)] scale-110 z-30 shadow-2xl' 
-                                : 'bg-[var(--color-surface)] border-[var(--color-border)] hover:border-[var(--color-accent)] hover:shadow-xl z-20'
+                                : 'bg-[var(--color-surface)] border-transparent z-20'
                             }`}>
+                               {/* Animated Gradient Border for Orbit Nodes */}
+                               {activeService.title !== service.title && (
+                                 <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,#7928ca,#ff0080,#7928ca)] animate-[spin_3s_linear_infinite] opacity-50 group-hover:opacity-100"></div>
+                               )}
+                               <div className={`absolute ${activeService.title !== service.title ? 'inset-[2px]' : 'inset-0'} rounded-[14px] bg-[var(--color-surface)] z-0`}></div>
+                               
                                <div className="relative z-10 flex flex-col items-center px-2">
                                  <service.icon className={`w-6 h-6 mb-2 transition-colors duration-500 ${
-                                   activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-accent)]'
+                                   activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[#ff0080]'
                                  }`} />
                                  <span className={`text-[10px] font-bold text-center leading-tight transition-colors duration-500 ${
                                    activeService.title === service.title ? 'text-[var(--color-background)]' : 'text-[var(--color-primary)]'
