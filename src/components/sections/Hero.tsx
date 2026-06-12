@@ -90,7 +90,7 @@ export function Hero() {
         </AnimateOnScroll>
 
         {/* Scrolling Marquees */}
-        <AnimateOnScroll variants={fadeUp} delay={0.45} className="w-full mb-16 overflow-hidden relative select-none">
+        <AnimateOnScroll variants={fadeUp} delay={0.45} className="w-full overflow-hidden relative select-none">
           {/* Fading edges for the marquee */}
           <div className="absolute inset-y-0 left-0 w-12 md:w-24 bg-gradient-to-r from-[var(--color-background)] to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-12 md:w-24 bg-gradient-to-l from-[var(--color-background)] to-transparent z-10 pointer-events-none"></div>

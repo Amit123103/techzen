@@ -46,7 +46,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-[var(--color-background)]">
+    <section id="services" className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-[var(--color-background)]">
       <Container>
         <AnimateOnScroll>
           <SectionHeading
