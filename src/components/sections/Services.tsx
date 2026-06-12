@@ -51,7 +51,7 @@ export function Services() {
   const [activeService, setActiveService] = useState(services[0]);
 
   return (
-    <section id="services" className="pt-24 lg:pt-32 pb-12 lg:pb-16 bg-[var(--color-background)] overflow-hidden">
+    <section id="services" className="pt-12 lg:pt-16 pb-12 lg:pb-16 bg-[var(--color-background)] overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
