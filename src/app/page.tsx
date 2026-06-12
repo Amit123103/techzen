@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ImageShowcase />
       <Services />
       <MarqueeDivider />
       <WhyChoose />
-      <ImageShowcase />
       <Process />
       <TrustSignals />
       <Industries />
