@@ -48,12 +48,7 @@ export function Navbar() {
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
               <span className="sr-only">TechZen</span>
-              <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center transition-colors">
-                <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
-              </div>
-              <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">
-                TechZen
-              </span>
+              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-auto object-contain" />
             </Link>
           </div>
 
@@ -108,12 +103,7 @@ export function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
               <span className="sr-only">TechZen</span>
-              <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center transition-colors">
-                <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
-              </div>
-              <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">
-                TechZen
-              </span>
+              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-auto object-contain" />
             </Link>
             <button
               type="button"

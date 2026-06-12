@@ -54,9 +54,9 @@
     --secondary: #44403C;
     --accent: #BA9B54; /* Gold accent */
     --accent-hover: #A38545;
-    --background: #FFFFFF;
-    --surface: #FAFAFA;
-    --border: #EAEAEA;
+    --background: #F4F1EA; /* Logo paper background */
+    --surface: #EAE6DD; /* Slightly darker than paper for surfaces */
+    --border: #DCD6C8;
     --text: #171717;
     --muted: #666666;
   }
