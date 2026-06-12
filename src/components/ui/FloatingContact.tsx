@@ -6,7 +6,7 @@ export function FloatingContact() {
   return (
     <>
     {/* Right Side Contact Buttons */}
-    <div className="fixed right-4 top-[30%] -translate-y-1/2 z-50 flex flex-col gap-3">
+    <div className="fixed right-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
       {/* WhatsApp Button */}
       <a 
         href="https://wa.me/1234567890" 
@@ -82,7 +82,7 @@ export function FloatingContact() {
     </div>
 
     {/* Left Side Social Buttons */}
-    <div className="fixed left-4 top-[30%] -translate-y-1/2 z-50 flex flex-col gap-3">
+    <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
       {/* YouTube Button */}
       <a 
         href="https://youtube.com" 
