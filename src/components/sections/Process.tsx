@@ -95,13 +95,13 @@ export function Process() {
                   onClick={() => setActiveStep(index)}
                   onMouseEnter={() => setActiveStep(index)}
                 >
-                  <div className={`flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center font-bold text-base md:text-lg transition-all duration-300 ${
+                  <div className={`flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center font-bold text-sm md:text-base transition-all duration-300 ${
                     isActive ? "bg-[var(--color-primary)] text-[var(--color-background)] shadow-md md:scale-110" : "bg-[var(--color-background)] border-2 border-[var(--color-border)] text-[var(--color-muted)]"
                   }`}>
                     {step.number}
                   </div>
                   <div className="flex flex-col mt-1">
-                    <h3 className={`text-lg md:text-xl font-bold transition-colors duration-300 ${isActive ? "text-[var(--color-primary)]" : "text-[var(--color-text)]"}`}>
+                    <h3 className={`text-base md:text-lg font-bold transition-colors duration-300 ${isActive ? "text-[var(--color-primary)]" : "text-[var(--color-text)]"}`}>
                       {step.title}
                     </h3>
                     <AnimatePresence>
@@ -110,7 +110,7 @@ export function Process() {
                           initial={{ opacity: 0, height: 0, marginTop: 0 }}
                           animate={{ opacity: 1, height: "auto", marginTop: 8 }}
                           exit={{ opacity: 0, height: 0, marginTop: 0 }}
-                          className="text-[var(--color-muted)] text-sm md:text-base leading-relaxed overflow-hidden"
+                          className="text-[var(--color-muted)] text-xs md:text-sm leading-relaxed overflow-hidden"
                         >
                           {step.description}
                         </motion.p>
