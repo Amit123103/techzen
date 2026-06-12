@@ -9,12 +9,15 @@ import { Industries } from "@/components/sections/Industries";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Team } from "@/components/sections/Team";
 import { MultiStepContact } from "@/components/sections/MultiStepContact";
+import { AnimatedLine } from "@/components/ui/AnimatedLine";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <AnimatedLine />
       <ImageShowcase />
+      <AnimatedLine />
       <Services />
       <MarqueeDivider />
       <WhyChoose />
