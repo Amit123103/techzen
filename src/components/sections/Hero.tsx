@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section className="relative pt-20 pb-16 lg:pt-24 lg:pb-24 bg-[var(--color-background)] overflow-hidden flex flex-col justify-start">
       {/* Subtle Tech Background Image */}
-      <div className="absolute inset-0 z-0 opacity-[0.04] pointer-events-none mix-blend-multiply">
+      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none mix-blend-multiply">
         {backgroundImages.map((src, index) => (
           <img 
             key={src}
