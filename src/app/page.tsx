@@ -1,5 +1,4 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustSignals } from "@/components/sections/TrustSignals";
 import { Services } from "@/components/sections/Services";
 import { ImageShowcase } from "@/components/sections/ImageShowcase";
 import { WhyChoose } from "@/components/sections/WhyChoose";
@@ -22,7 +21,6 @@ export default function Home() {
       <MarqueeDivider />
       <WhyChoose />
       <Process />
-      <TrustSignals />
       <Industries />
       <Testimonials />
       <Team />
