@@ -231,7 +231,7 @@ export function Services() {
                                {activeService.title !== service.title && (
                                  <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,#7928ca,#ff0080,#7928ca)] animate-[spin_3s_linear_infinite] opacity-50 group-hover:opacity-100"></div>
                                )}
-                               <div className={`absolute ${activeService.title !== service.title ? 'inset-[2px]' : 'inset-0'} rounded-[14px] bg-[var(--color-surface)] z-0`}></div>
+                               <div className={`absolute ${activeService.title !== service.title ? 'inset-[2px] bg-[var(--color-surface)]' : 'inset-0 bg-transparent'} rounded-[14px] z-0 transition-colors duration-500`}></div>
                                
                                <div className="relative z-10 flex flex-col items-center px-2">
                                  <service.icon className={`w-6 h-6 mb-2 transition-colors duration-500 ${
