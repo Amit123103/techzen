@@ -30,11 +30,11 @@ export function SectionHeading({
           {eyebrow}
         </span>
       )}
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[var(--color-text)]">
+      <h2 className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-[var(--color-text)]">
         {title}
       </h2>
       {description && (
-        <p className="max-w-[700px] text-base md:text-lg text-[var(--color-muted)] text-balance">
+        <p className="max-w-[700px] text-xs md:text-sm text-[var(--color-muted)] text-balance">
           {description}
         </p>
       )}

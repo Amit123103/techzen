@@ -82,7 +82,6 @@ export function Services() {
                 title="What we do best"
                 description="We don't just write code; we solve complex problems. We build custom software solutions tailored perfectly to your unique business bottlenecks. Our team of expert developers, designers, and strategists work closely with you from concept to deployment. Whether you need a sleek mobile app, a robust web platform, or intelligent AI automation, we have the skills and the track record to deliver excellence."
                 align="left"
-                className="[&_h2]:text-3xl [&_h2]:md:text-4xl [&_p]:text-sm [&_p]:md:text-base"
               />
               <div className="mt-8 flex flex-col gap-5">
                 {[
