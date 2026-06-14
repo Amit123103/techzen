@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/ui/FloatingContact";
+import { ClientSuccessWidget } from "@/components/ui/ClientSuccessWidget";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
@@ -13,20 +14,20 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TechZen | Enterprise Software Solutions & Digital Products",
-  description: "TechZen builds high-performance, scalable software solutions for startups and enterprises. Specializing in custom web development, mobile apps, and enterprise SaaS.",
+  title: "ReInformTech | Enterprise Software Solutions & Digital Products",
+  description: "ReInformTech builds high-performance, scalable software solutions for startups and enterprises. Specializing in custom web development, mobile apps, and enterprise SaaS.",
   keywords: ["enterprise software", "custom software development", "SaaS development", "web development", "mobile apps", "UI/UX design", "tech agency"],
-  authors: [{ name: "TechZen" }],
+  authors: [{ name: "ReInformTech" }],
   openGraph: {
-    title: "TechZen | Enterprise Software Solutions",
+    title: "ReInformTech | Enterprise Software Solutions",
     description: "Building scalable digital products that drive enterprise growth. Custom software, SaaS platforms, and mobile applications.",
     type: "website",
     locale: "en_US",
-    siteName: "TechZen",
+    siteName: "ReInformTech",
   },
   twitter: {
     card: "summary_large_image",
-    title: "TechZen | Enterprise Software Solutions",
+    title: "ReInformTech | Enterprise Software Solutions",
     description: "Building scalable digital products that drive enterprise growth.",
   },
 };
@@ -49,6 +50,7 @@ export default function RootLayout({
           <main className="flex-grow flex flex-col pt-24">{children}</main>
           <Footer />
           <FloatingContact />
+          <ClientSuccessWidget />
         </ThemeProvider>
       </body>
     </html>

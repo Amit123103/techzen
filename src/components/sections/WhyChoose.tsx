@@ -66,7 +66,7 @@ export function WhyChoose() {
           <div className="flex flex-col gap-12">
             <AnimateOnScroll className="flex flex-col items-start text-left max-w-xl">
               <SectionHeading
-                eyebrow="Why Choose TechZen"
+                eyebrow="Why Choose ReInformTech"
                 title="Why work with us?"
                 description="We're builders at heart. We don't just write code; we care about the success of your business. Here's what you can expect when you partner with us."
                 align="left"
@@ -123,7 +123,7 @@ export function WhyChoose() {
           <div className="hidden lg:flex justify-center items-center relative h-[600px]">
             
             {/* Central Hub */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-4 border-[var(--color-background)] shadow-2xl z-20 overflow-hidden bg-[var(--color-surface)]">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full border-4 border-[var(--color-background)] shadow-2xl z-20 overflow-hidden bg-[var(--color-surface)] [clip-path:circle(50%)] [transform:translate3d(-50%,-50%,0)]">
               {galleryImages.map((src, idx) => (
                 <img 
                   key={src}
@@ -132,6 +132,7 @@ export function WhyChoose() {
                   className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
                     idx === activeIndex ? "opacity-100 scale-100" : "opacity-0 scale-110"
                   }`}
+                  style={{ objectPosition: 'center', minHeight: '100%', minWidth: '100%' }}
                 />
               ))}
             </div>
@@ -149,14 +150,14 @@ export function WhyChoose() {
                     <div style={{ transform: `rotate(-${angle}deg)` }}>
                       <div className="w-20 h-20 -ml-10 -mt-10 animate-spin-slow-reverse">
                         <div 
-                          className={`w-full h-full rounded-full border-4 shadow-lg overflow-hidden transition-all duration-500 cursor-pointer ${
+                          className={`w-full h-full rounded-full border-4 shadow-lg overflow-hidden transition-all duration-500 cursor-pointer [clip-path:circle(50%)] ${
                             index === activeIndex 
                               ? "border-[var(--color-primary)] scale-125 z-30" 
                               : "border-[var(--color-background)] opacity-60 hover:opacity-100 z-20"
                           }`}
                           onClick={() => setActiveIndex(index)}
                         >
-                          <img src={src} alt="Thumbnail" className="w-full h-full object-cover" />
+                          <img src={src} alt="Thumbnail" className="w-full h-full object-cover" style={{ objectPosition: 'center', minHeight: '100%', minWidth: '100%' }} />
                         </div>
                       </div>
                     </div>

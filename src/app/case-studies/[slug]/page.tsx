@@ -14,7 +14,7 @@ const caseStudiesData: Record<string, any> = {
     heroImage: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     overview: "Quantum Health needed a modern, secure, and highly scalable patient portal to handle real-time data sync across 50+ clinics.",
     problem: "Their legacy system was built on a monolithic PHP architecture that struggled with concurrent users during peak hours. Data synchronization between clinics could take up to 24 hours, leading to patient dissatisfaction and operational bottlenecks. Furthermore, the UI was severely outdated and lacked accessibility compliance.",
-    solution: "TechZen architected a decoupled system using a React frontend and a Node.js/GraphQL backend, hosted on AWS. We implemented a real-time event-driven architecture using AWS EventBridge to ensure instant data sync across all clinic nodes. We also rebuilt the entire UI from scratch, adhering to strict WCAG accessibility guidelines.",
+    solution: "ReInformTech architected a decoupled system using a React frontend and a Node.js/GraphQL backend, hosted on AWS. We implemented a real-time event-driven architecture using AWS EventBridge to ensure instant data sync across all clinic nodes. We also rebuilt the entire UI from scratch, adhering to strict WCAG accessibility guidelines.",
     technologies: ["React", "TypeScript", "Node.js", "GraphQL", "AWS Lambda", "AWS EventBridge", "PostgreSQL"],
     results: [
       "Reduced data synchronization latency from 24 hours to sub-100ms.",
@@ -64,7 +64,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!data) return { title: "Not Found" };
   
   return {
-    title: `${data.title} | Case Studies | TechZen`,
+    title: `${data.title} | Case Studies | ReInformTech`,
     description: data.overview,
   };
 }

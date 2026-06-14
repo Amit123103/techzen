@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Case Studies | TechZen Enterprise",
+  title: "Case Studies | ReInformTech Enterprise",
   description: "Explore our recent enterprise projects, from complex microservice migrations to scalable SaaS platforms.",
 };
 
@@ -45,9 +45,9 @@ export default function CaseStudiesPage() {
       <Container>
         <SectionHeading 
           title="Case Studies" 
-          subtitle="Our Work" 
+          eyebrow="Our Work" 
           description="We partner with ambitious companies to solve complex technical challenges. Here are a few examples of how we've driven business growth through engineering excellence."
-          alignment="left"
+          align="left"
           className="mb-20 max-w-3xl"
         />
 

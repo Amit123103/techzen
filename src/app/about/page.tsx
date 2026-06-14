@@ -2,42 +2,45 @@ import { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Team } from "@/components/sections/Team";
+import { AnimatedLine } from "@/components/ui/AnimatedLine";
 
 export const metadata: Metadata = {
-  title: "About Us | TechZen Enterprise",
-  description: "Learn about TechZen's journey, our mission to build practical digital solutions, and the team behind our enterprise software.",
+  title: "About Us | ReInformTech Enterprise",
+  description: "Learn about ReInformTech's journey, our mission to build practical digital solutions, and the team behind our enterprise software.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col gap-24 pb-24">
+    <div className="flex flex-col gap-0 pb-0">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-[var(--color-surface)] border-b border-[var(--color-border)]">
+      <section className="pt-32 pb-16 bg-[var(--color-surface)]">
         <Container>
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-[var(--color-text)]">
               We build software that powers modern enterprises.
             </h1>
             <p className="text-xl text-[var(--color-muted)] leading-relaxed">
-              TechZen started with a small team of developers passionate about building practical, scalable digital solutions for startups and global enterprises. Today, we are a collective of engineers, designers, and strategists dedicated to technical excellence.
+              ReInformTech started with a small team of developers passionate about building practical, scalable digital solutions for startups and global enterprises. Today, we are a collective of engineers, designers, and strategists dedicated to technical excellence.
             </p>
           </div>
         </Container>
       </section>
 
+      <AnimatedLine />
+
       {/* Founder Story & Mission */}
-      <section>
+      <section className="py-24 bg-[var(--color-background)]">
         <Container>
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <SectionHeading 
                 title="Our Story" 
-                subtitle="The Journey" 
-                alignment="left"
+                eyebrow="The Journey" 
+                align="left"
               />
               <div className="prose prose-lg dark:prose-invert text-[var(--color-muted)] mt-6 space-y-6">
                 <p>
-                  In 2018, we noticed a recurring problem: ambitious companies were being held back by outdated legacy systems and bloated agency processes. TechZen was founded with a simple premise: engineering teams should focus on delivering pure business value through elegant code.
+                  In 2018, we noticed a recurring problem: ambitious companies were being held back by outdated legacy systems and bloated agency processes. ReInformTech was founded with a simple premise: engineering teams should focus on delivering pure business value through elegant code.
                 </p>
                 <p>
                   What started in a small co-working space has evolved into a global remote-first team. We don&apos;t just write code; we partner with our clients to architect systems that are resilient, scalable, and beautifully designed.
@@ -57,12 +60,14 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <AnimatedLine />
+
       {/* Timeline / Milestones */}
-      <section className="bg-[var(--color-surface)] py-24 border-y border-[var(--color-border)]">
+      <section className="bg-[var(--color-surface)] py-24">
         <Container>
           <SectionHeading 
             title="Milestones" 
-            subtitle="Our Evolution" 
+            eyebrow="Our Evolution" 
           />
           <div className="max-w-4xl mx-auto mt-16 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[var(--color-border)] before:to-transparent">
             
@@ -100,8 +105,12 @@ export default function AboutPage() {
         </Container>
       </section>
 
+      <AnimatedLine />
+
       {/* Team Section */}
-      <Team />
+      <div className="py-24 bg-[var(--color-background)]">
+        <Team />
+      </div>
     </div>
   );
 }

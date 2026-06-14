@@ -41,26 +41,44 @@ export function MultiStepContact() {
   const nextStep = () => setStep(prev => Math.min(prev + 1, 5));
   const prevStep = () => setStep(prev => Math.max(prev - 1, 1));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
       setStep(5); // Success step
-    }, 1500);
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('There was a problem submitting your request. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" className="py-24 lg:py-32 bg-[var(--color-surface)] border-t border-[var(--color-border)]">
       <Container>
-        <div className="max-w-3xl mx-auto">
-          <SectionHeading
-            eyebrow="Start a Project"
-            title="Let's build something great."
-            align="center"
-            className="mb-12"
-          />
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
+          {/* Left Column: Form */}
+          <div className="w-full">
+            <SectionHeading
+              eyebrow="Start a Project"
+              title="Let's build something great."
+              align="left"
+              className="mb-10"
+            />
 
           <div className="bg-[var(--color-background)] border border-[var(--color-border)] rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden">
             
@@ -275,6 +293,54 @@ export function MultiStepContact() {
               )}
             </div>
 
+            </div>
+          </div>
+
+          {/* Right Column: Contact & Map */}
+          <div className="bg-[var(--color-background)] border border-[var(--color-border)] rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden h-full flex flex-col mt-4 lg:mt-0">
+            <h3 className="text-2xl font-bold text-[var(--color-text)] mb-8">Contact & Location</h3>
+            
+            <div className="space-y-6 mb-8 flex-grow">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0 mt-1 border border-[var(--color-accent)]/20">
+                  <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-[var(--color-text)] font-semibold mb-1">Company Location</h4>
+                  <p className="text-[var(--color-muted)] text-sm leading-relaxed">
+                    Sector 63 A<br/>
+                    Noida, Uttar Pradesh<br/>
+                    Pin Code: 201301<br/>
+                    India
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0 mt-1 border border-[var(--color-accent)]/20">
+                  <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                  <h4 className="text-[var(--color-text)] font-semibold mb-1">Email Us</h4>
+                  <a href="mailto:reinformtech@gmail.com" className="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] transition-colors">
+                    reinformtech@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Google Map */}
+            <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden border border-[var(--color-border)] mt-auto relative z-10 shadow-inner">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14010.53630252554!2d77.3783!3d28.6180!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef9cf350a4bf%3A0x8cf25211d293f0b2!2sSector%2063A%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
           </div>
         </div>
       </Container>

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LayoutDashboard, Users, FileText, Settings, Briefcase, Bell, Search, LogOut } from "lucide-react";
 
 export const metadata = {
-  title: "Admin Dashboard | TechZen",
+  title: "Admin Dashboard | ReInformTech",
 };
 
 const navigation = [
@@ -22,7 +22,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
         <div className="h-16 flex items-center px-6 border-b border-[var(--color-border)]">
           <Link href="/" className="flex items-center gap-2">
             <div className="h-8 w-8 rounded bg-[var(--color-text)] flex items-center justify-center">
-              <span className="text-[var(--color-background)] font-bold text-lg leading-none">T</span>
+              <span className="text-[var(--color-background)] font-bold text-lg leading-none">R</span>
             </div>
             <span className="text-xl font-bold tracking-tight text-[var(--color-text)]">Admin</span>
           </Link>

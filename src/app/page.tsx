@@ -20,10 +20,15 @@ export default function Home() {
       <Services />
       <MarqueeDivider />
       <WhyChoose />
+      <AnimatedLine />
       <Process />
+      <AnimatedLine />
       <Industries />
+      <AnimatedLine />
       <Testimonials />
+      <AnimatedLine />
       <Team />
+      <AnimatedLine />
       <MultiStepContact />
     </>
   );

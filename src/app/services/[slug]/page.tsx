@@ -58,7 +58,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   if (!data) return { title: "Not Found" };
   
   return {
-    title: `${data.title} | Services | TechZen`,
+    title: `${data.title} | Services | ReInformTech`,
     description: data.overview,
   };
 }

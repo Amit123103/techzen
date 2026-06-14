@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -10,16 +11,31 @@ import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
-  { name: "Solutions", href: "#solutions" },
-  { name: "About", href: "#about" },
-  { name: "Careers", href: "#careers" },
-  { name: "Contact", href: "#contact" },
+  { name: "Services", href: "/#services" },
+  { name: "Solutions", href: "/#solutions" },
+  { name: "About", href: "/#about" },
+  { name: "Careers", href: "/careers" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      if (pathname === "/") {
+        e.preventDefault();
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }
+  };
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -47,10 +63,12 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
-              <img src="/logo.png" alt="TechZen Logo" className="h-8 w-8 object-cover rounded-full mix-blend-multiply" />
-              <div className="text-xl font-extrabold tracking-tighter">
-                <span className="text-[var(--color-primary)]">Tech</span>
-                <span className="text-[var(--color-accent)] font-serif italic font-semibold">Zen</span>
+              <div className="h-8 w-8 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
+                <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
+              </div>
+              <div className="text-[17px] font-bold tracking-tight">
+                <span className="text-[var(--color-text)]">ReInform</span>
+                <span className="text-[#D65A7C]">Tech</span>
               </div>
             </Link>
           </div>
@@ -61,6 +79,7 @@ export function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleNavClick(e, item.href)}
                 className="text-sm font-medium leading-6 text-[var(--color-text)] hover:text-[var(--color-muted)] transition-colors"
               >
                 {item.name}
@@ -71,7 +90,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
             <ThemeToggle />
-            <Button size="sm">Book Consultation</Button>
+            <Button size="sm" onClick={(e) => handleNavClick(e, '/#contact')}>Book Consultation</Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -105,10 +124,12 @@ export function Navbar() {
         >
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-              <img src="/logo.png" alt="TechZen Logo" className="h-8 w-8 object-cover rounded-full mix-blend-multiply" />
-              <div className="text-xl font-extrabold tracking-tighter">
-                <span className="text-[var(--color-primary)]">Tech</span>
-                <span className="text-[var(--color-accent)] font-serif italic font-semibold">Zen</span>
+              <div className="h-8 w-8 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
+                <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
+              </div>
+              <div className="text-[17px] font-bold tracking-tight">
+                <span className="text-[var(--color-text)]">ReInform</span>
+                <span className="text-[#D65A7C]">Tech</span>
               </div>
             </Link>
             <button
@@ -128,7 +149,10 @@ export function Navbar() {
                     key={item.name}
                     href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--color-text)] hover:bg-[var(--color-surface)]"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={(e) => {
+                      setMobileMenuOpen(false);
+                      handleNavClick(e, item.href);
+                    }}
                   >
                     {item.name}
                   </Link>

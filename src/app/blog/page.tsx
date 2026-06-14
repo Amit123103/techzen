@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Search, Clock } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog & Insights | TechZen Enterprise",
+  title: "Blog & Insights | ReInformTech Enterprise",
   description: "Read our latest articles on enterprise software development, system architecture, and engineering leadership.",
 };
 
@@ -49,8 +49,8 @@ export default function BlogPage() {
           <div className="max-w-2xl">
             <SectionHeading 
               title="Blog & Insights" 
-              subtitle="Engineering Notes" 
-              alignment="left"
+              eyebrow="Engineering Notes" 
+              align="left"
               className="mb-0"
             />
           </div>

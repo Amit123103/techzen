@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hi there! I'm David from TechZen. How can I help you today?", sender: "agent" }
+    { id: 1, text: "Hi there! I'm David from ReInformTech. How can I help you today?", sender: "agent" }
   ]);
   const [input, setInput] = useState("");
 
@@ -62,7 +62,7 @@ export function LiveChat() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[var(--color-text)] text-sm">David Chen</h3>
-                  <p className="text-xs text-[var(--color-muted)]">TechZen Engineering</p>
+                  <p className="text-xs text-[var(--color-muted)]">ReInformTech Engineering</p>
                 </div>
               </div>
               <button 

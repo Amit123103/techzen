@@ -73,11 +73,13 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-4 xl:gap-12">
           
           <div className="space-y-8 xl:col-span-1">
-            <Link href="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="TechZen Logo" className="h-10 w-10 object-cover rounded-full mix-blend-multiply" />
-              <div className="text-2xl font-extrabold tracking-tighter">
-                <span className="text-[var(--color-primary)]">Tech</span>
-                <span className="text-[var(--color-accent)] font-serif italic font-semibold">Zen</span>
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="h-10 w-10 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
+                <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
+              </div>
+              <div className="text-xl font-bold tracking-tight">
+                <span className="text-[var(--color-text)]">ReInform</span>
+                <span className="text-[#D65A7C]">Tech</span>
               </div>
             </Link>
             <p className="text-sm leading-6 text-[var(--color-muted)] max-w-xs">
@@ -176,7 +178,7 @@ export function Footer() {
         
         <div className="mt-16 border-t border-[var(--color-border)] pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm leading-5 text-[var(--color-muted)] font-medium">
-            &copy; {new Date().getFullYear()} TechZen Enterprise. All rights reserved.
+            &copy; {new Date().getFullYear()} ReInformTech Enterprise. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm font-medium text-[var(--color-muted)]">
             <span className="flex items-center gap-2">Built for scale. Designed for humans.</span>

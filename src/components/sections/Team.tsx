@@ -2,7 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
-import { Mail } from "lucide-react";
+import { Mail, Globe } from "lucide-react";
 import Link from "next/link";
 
 const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -19,28 +19,25 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const teamMembers = [
   {
-    name: "Alex Rivera",
-    role: "VP of Engineering",
-    bio: "Former Principal Engineer at Stripe. Alex leads our technical strategy and ensures our architecture scales elegantly.",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    skills: ["System Architecture", "Go", "AWS", "Team Leadership"],
-    social: { linkedin: "#", github: "#", mail: "mailto:alex@techzen.com" }
+    name: "Aditya Kumar Singh",
+    role: "Co-Founder & CEO",
+    bio: "Visionary leader driving ReInformTech's mission to build scalable enterprise solutions. Aditya brings deep expertise in business strategy and technology leadership.",
+    image: "/aditya-kumar-singh.png",
+    skills: ["Business Strategy", "Tech Leadership", "Product Vision", "Enterprise Solutions", "DevOps Engineer", "Full-Stack Developer"],
+    social: { linkedin: "https://www.linkedin.com/in/adityakumars/", github: "https://github.com/Aditya-k1-singh", mail: "mailto:reinformtech@gmail.com" }
   },
   {
-    name: "Sarah Chen",
-    role: "Lead Product Designer",
-    bio: "Obsessed with micro-interactions and accessibility. Sarah spent 5 years designing enterprise tools at Figma.",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    skills: ["UI/UX", "Design Systems", "Framer", "User Research"],
-    social: { linkedin: "#", github: "#", mail: "mailto:sarah@techzen.com" }
-  },
-  {
-    name: "Marcus Johnson",
-    role: "Senior Full-Stack Engineer",
-    bio: "Open-source contributor and Next.js expert. Marcus builds the resilient frontends that power our clients' platforms.",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
-    skills: ["React", "TypeScript", "Node.js", "GraphQL"],
-    social: { linkedin: "#", github: "#", mail: "mailto:marcus@techzen.com" }
+    name: "Amit Kumar",
+    role: "Co-Founder & CTO",
+    bio: "Engineering powerhouse leading the technical architecture at ReInformTech. Amit ensures every product is built with scalability, performance, and excellence at its core.",
+    image: "/amit-kumar.png",
+    skills: ["System Architecture", "Full-Stack Development", "Cloud Infrastructure", "Machine Learning & AI Specialist", "DevOps Engineer", "Team Leadership"],
+    social: { 
+      linkedin: "https://www.linkedin.com/in/amit-akhil/", 
+      github: "https://github.com/Amit123103", 
+      mail: "mailto:reinformtech@gmail.com",
+      portfolio: "https://amit123103.github.io/SmartPortfolio/"
+    }
   },
 ];
 
@@ -58,7 +55,7 @@ export function Team() {
         </AnimateOnScroll>
 
         <AnimateOnScroll variants={staggerContainer}>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             {teamMembers.map((member, index) => (
               <AnimateOnScroll key={index} variants={fadeUp}>
                 <div className="group rounded-3xl bg-[var(--color-background)] border border-[var(--color-border)] overflow-hidden hover:shadow-lg hover:border-[var(--color-accent)] transition-all duration-300">
@@ -81,15 +78,20 @@ export function Team() {
                     </div>
                     
                     <div className="flex items-center gap-4 pt-6 border-t border-[var(--color-border)]">
-                      <Link href={member.social.linkedin} className="text-[var(--color-muted)] hover:text-[#0A66C2] transition-colors" aria-label="LinkedIn">
+                      <Link href={member.social.linkedin} className="text-[var(--color-muted)] hover:text-[#0A66C2] transition-colors" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                         <LinkedinIcon className="w-5 h-5" />
                       </Link>
-                      <Link href={member.social.github} className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors" aria-label="GitHub">
+                      <Link href={member.social.github} className="text-[var(--color-muted)] hover:text-[var(--color-text)] transition-colors" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                         <GithubIcon className="w-5 h-5" />
                       </Link>
                       <Link href={member.social.mail} className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors" aria-label="Email">
                         <Mail className="w-5 h-5" />
                       </Link>
+                      {(member.social as any).portfolio && (
+                        <Link href={(member.social as any).portfolio} className="text-[var(--color-muted)] hover:text-[#10b981] transition-colors" aria-label="Portfolio" target="_blank" rel="noopener noreferrer">
+                          <Globe className="w-5 h-5" />
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>

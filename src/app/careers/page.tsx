@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Briefcase, Coffee, Heart, Map, Monitor, Star } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Careers | TechZen Enterprise",
+  title: "Careers | ReInformTech Enterprise",
   description: "Join our remote-first team of engineers, designers, and strategists building enterprise software.",
 };
 
@@ -61,7 +61,7 @@ export default function CareersPage() {
       {/* Benefits */}
       <section className="mb-24 py-24 bg-[var(--color-surface)] border-y border-[var(--color-border)]">
         <Container>
-          <SectionHeading title="Benefits" subtitle="Why Join Us" alignment="left" className="mb-16" />
+          <SectionHeading title="Benefits" eyebrow="Why Join Us" align="left" className="mb-16" />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((b, i) => (
               <div key={i} className="p-6 bg-[var(--color-background)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-colors">
@@ -79,7 +79,7 @@ export default function CareersPage() {
       {/* Open Positions */}
       <section>
         <Container>
-          <SectionHeading title="Open Roles" subtitle="Join The Team" alignment="left" className="mb-12" />
+          <SectionHeading title="Open Roles" eyebrow="Join The Team" align="left" className="mb-12" />
           <div className="flex flex-col gap-4">
             {jobs.map((job, i) => (
               <div key={i} className="flex flex-col md:flex-row md:items-center justify-between p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] hover:shadow-md transition-shadow">
