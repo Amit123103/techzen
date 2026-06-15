@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description: "ReInformTech builds high-performance, scalable software solutions for startups and enterprises. Specializing in custom web development, mobile apps, and enterprise SaaS.",
   keywords: ["enterprise software", "custom software development", "SaaS development", "web development", "mobile apps", "UI/UX design", "tech agency"],
   authors: [{ name: "ReInformTech" }],
+  verification: {
+    google: "dGTUTheZXszdcgoZJhqmHI6LRNy1-39mpl5ie-7oXHI",
+  },
   openGraph: {
     title: "ReInformTech | Enterprise Software Solutions",
     description: "Building scalable digital products that drive enterprise growth. Custom software, SaaS platforms, and mobile applications.",
