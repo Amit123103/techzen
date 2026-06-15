@@ -3,16 +3,28 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
+import { ServiceTicker } from "@/components/layout/ServiceTicker";
 
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/#services" },
-  { name: "Solutions", href: "/#solutions" },
+  { 
+    name: "Solutions", 
+    href: "/#solutions",
+    dropdown: [
+      { name: "Enterprise SaaS", href: "/solutions/enterprise-saas" },
+      { name: "Cloud Architecture", href: "/solutions/cloud-architecture" },
+      { name: "Mobile Applications", href: "/solutions/mobile-applications" },
+      { name: "AI Automation", href: "/solutions/ai-automation" },
+      { name: "Custom CRM", href: "/solutions/custom-crm" },
+      { name: "E-Commerce Platforms", href: "/solutions/e-commerce" }
+    ]
+  },
   { name: "About", href: "/#about" },
   { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/#contact" },
@@ -33,7 +45,11 @@ export function Navbar() {
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
         }
+      } else {
+        router.push(href);
       }
+    } else {
+      router.push(href);
     }
   };
 
@@ -66,9 +82,9 @@ export function Navbar() {
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
                 <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
               </div>
-              <div className="text-[17px] font-bold tracking-tight">
+              <div className="text-[19px] font-extrabold tracking-tight">
                 <span className="text-[var(--color-text)]">ReInform</span>
-                <span className="text-[#D65A7C]">Tech</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D65A7C] to-[#FF8C69]">Tech</span>
               </div>
             </Link>
           </div>
@@ -76,14 +92,35 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm font-medium leading-6 text-[var(--color-text)] hover:text-[var(--color-muted)] transition-colors"
-              >
-                {item.name}
-              </Link>
+              <div key={item.name} className="relative group">
+                <Link
+                  href={item.href}
+                  onClick={(e) => {
+                    if (!item.dropdown) handleNavClick(e, item.href);
+                  }}
+                  className="text-sm font-medium leading-6 text-[var(--color-text)] hover:text-[var(--color-muted)] transition-colors py-2 flex items-center gap-1"
+                >
+                  {item.name}
+                  {item.dropdown && <ChevronDown className="w-4 h-4 opacity-70" />}
+                </Link>
+                
+                {item.dropdown && (
+                  <div className="absolute left-0 top-full mt-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <div className="rounded-xl shadow-lg ring-1 ring-black/5 bg-[var(--color-surface)] overflow-hidden border border-[var(--color-border)] p-2">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          href={subItem.href}
+                          onClick={(e) => handleNavClick(e, subItem.href)}
+                          className="block rounded-lg px-4 py-3 text-sm font-medium text-[var(--color-text)] hover:bg-[var(--color-background)] hover:text-[var(--color-accent)] transition-colors"
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
@@ -127,9 +164,9 @@ export function Navbar() {
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
                 <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
               </div>
-              <div className="text-[17px] font-bold tracking-tight">
+              <div className="text-[19px] font-extrabold tracking-tight">
                 <span className="text-[var(--color-text)]">ReInform</span>
-                <span className="text-[#D65A7C]">Tech</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D65A7C] to-[#FF8C69]">Tech</span>
               </div>
             </Link>
             <button
@@ -145,17 +182,38 @@ export function Navbar() {
             <div className="-my-6 divide-y divide-[var(--color-border)]">
               <div className="space-y-2 py-6">
                 {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--color-text)] hover:bg-[var(--color-surface)]"
-                    onClick={(e) => {
-                      setMobileMenuOpen(false);
-                      handleNavClick(e, item.href);
-                    }}
-                  >
-                    {item.name}
-                  </Link>
+                  <div key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="-mx-3 flex items-center justify-between rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[var(--color-text)] hover:bg-[var(--color-surface)]"
+                      onClick={(e) => {
+                        if (!item.dropdown) {
+                          setMobileMenuOpen(false);
+                          handleNavClick(e, item.href);
+                        }
+                      }}
+                    >
+                      {item.name}
+                      {item.dropdown && <ChevronDown className="w-5 h-5 opacity-70" />}
+                    </Link>
+                    {item.dropdown && (
+                      <div className="pl-4 mt-1 border-l-2 border-[var(--color-border)] ml-3 space-y-1">
+                        {item.dropdown.map((subItem) => (
+                          <Link
+                            key={subItem.name}
+                            href={subItem.href}
+                            className="block rounded-lg px-3 py-2 text-sm font-medium text-[var(--color-text)] opacity-80 hover:opacity-100 hover:bg-[var(--color-surface)]"
+                            onClick={(e) => {
+                              setMobileMenuOpen(false);
+                              handleNavClick(e, subItem.href);
+                            }}
+                          >
+                            {subItem.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
               <div className="py-6">
@@ -167,6 +225,9 @@ export function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Scrolling Ticker at the bottom of Navbar */}
+      <ServiceTicker />
     </header>
   );
 }

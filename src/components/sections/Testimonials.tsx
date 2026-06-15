@@ -6,8 +6,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardContent } from "@/components/ui/Card";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
-import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
-import { db } from '@/lib/firebase/client';
+import { supabase } from '@/lib/supabase/client';
 
 const fallbackTestimonials = [
   {
@@ -31,28 +30,39 @@ export function Testimonials() {
   const [realTestimonials, setRealTestimonials] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!db) return;
-    try {
-      const q = query(
-        collection(db, 'testimonials'),
-        orderBy('createdAt', 'desc'),
-        limit(3)
-      );
+    const fetchTestimonials = async () => {
+      if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return;
+      
+      try {
+        const { data, error } = await supabase
+          .from('testimonials')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(3);
+          
+        if (!error && data && data.length > 0) {
+          setRealTestimonials(data);
+        }
+      } catch (err) {
+        console.error("Error fetching testimonials:", err);
+      }
+    };
 
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        const newMessages = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-        setRealTestimonials(newMessages);
-      }, (error) => {
-        console.error("Firestore listen error in Testimonials:", error);
-      });
+    fetchTestimonials();
 
-      return () => unsubscribe();
-    } catch (e) {
-      console.log("Firebase not fully configured yet.");
-    }
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return;
+
+    // Subscribe to realtime changes
+    const channel = supabase
+      .channel('public:testimonials:section')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'testimonials' }, (payload) => {
+        fetchTestimonials();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const displayTestimonials = realTestimonials.length > 0 ? realTestimonials : fallbackTestimonials;

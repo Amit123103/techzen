@@ -1,31 +1,35 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 const footerNavigation = {
   services: [
-    { name: "Custom Software", href: "/services/custom-software" },
-    { name: "Web Development", href: "/services/web-development" },
-    { name: "Mobile Apps", href: "#" },
-    { name: "UI/UX Design", href: "#" },
-    { name: "Cloud Migration", href: "#" },
+    { name: "Custom Software", href: "/solutions/custom-crm" },
+    { name: "Web Development", href: "/solutions/enterprise-saas" },
+    { name: "Mobile Apps", href: "/solutions/mobile-applications" },
+    { name: "UI/UX Design", href: "/#services" },
+    { name: "Cloud Migration", href: "/solutions/cloud-architecture" },
   ],
   company: [
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/#about" },
     { name: "Careers", href: "/careers" },
-    { name: "Our Team", href: "/about#team" },
-    { name: "Contact", href: "#contact" },
+    { name: "Our Team", href: "/#team" },
+    { name: "Contact", href: "/#contact" },
   ],
   resources: [
-    { name: "Blog", href: "/blog" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Webinars", href: "#" },
-    { name: "Help Center", href: "#" },
+    { name: "Blog", href: "/#blog" },
+    { name: "Case Studies", href: "/#case-studies" },
+    { name: "Webinars", href: "/#webinars" },
+    { name: "Help Center", href: "/#help" },
   ],
   legal: [
-    { name: "Privacy Policy", href: "#" },
-    { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
+    { name: "Privacy Policy", href: "/privacy" },
+    { name: "Terms of Service", href: "/terms" },
+    { name: "Cookie Policy", href: "/cookies" },
   ],
   social: [
     {
@@ -67,6 +71,34 @@ const footerNavigation = {
 };
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setStatus("loading");
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      
+      if (response.ok) {
+        setStatus("success");
+        setEmail("");
+        // Reset after 3 seconds
+        setTimeout(() => setStatus("idle"), 3000);
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+  };
+
   return (
     <footer className="bg-[var(--color-surface)] border-t border-[var(--color-border)] pt-24 pb-8">
       <Container>
@@ -77,9 +109,9 @@ export function Footer() {
               <div className="h-10 w-10 rounded-full overflow-hidden bg-white flex-shrink-0 shadow-sm ring-1 ring-black/10">
                 <img src="/logo-icon.png" alt="ReInformTech" className="h-full w-full object-contain p-0.5" />
               </div>
-              <div className="text-xl font-bold tracking-tight">
+              <div className="text-[21px] font-extrabold tracking-tight">
                 <span className="text-[var(--color-text)]">ReInform</span>
-                <span className="text-[#D65A7C]">Tech</span>
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#D65A7C] to-[#FF8C69]">Tech</span>
               </div>
             </Link>
             <p className="text-sm leading-6 text-[var(--color-muted)] max-w-xs">
@@ -155,7 +187,7 @@ export function Footer() {
             <p className="text-sm text-[var(--color-muted)] mb-4">
               Get the latest insights on enterprise software architecture and engineering leadership.
             </p>
-            <form className="mt-2 sm:flex sm:max-w-md xl:max-w-none flex-col gap-3">
+            <form onSubmit={handleSubscribe} className="mt-2 sm:flex sm:max-w-md xl:max-w-none flex-col gap-3">
               <label htmlFor="email-address" className="sr-only">Email address</label>
               <input
                 type="email"
@@ -163,14 +195,32 @@ export function Footer() {
                 id="email-address"
                 autoComplete="email"
                 required
-                className="w-full min-w-0 appearance-none rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] px-4 py-3 text-base text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={status === "loading" || status === "success"}
+                className="w-full min-w-0 appearance-none rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] px-4 py-3 text-base text-[var(--color-text)] placeholder-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all disabled:opacity-50"
                 placeholder="Enter your email"
               />
               <div className="mt-3 rounded-md sm:mt-0 sm:shrink-0">
-                <Button type="submit" className="w-full">
-                  Subscribe
+                <Button 
+                  type="submit" 
+                  className="w-full"
+                  disabled={status === "loading" || status === "success"}
+                >
+                  {status === "loading" ? (
+                    <Loader2 className="w-5 h-5 animate-spin mx-auto" />
+                  ) : status === "success" ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <CheckCircle2 className="w-4 h-4" /> Subscribed!
+                    </span>
+                  ) : (
+                    "Subscribe"
+                  )}
                 </Button>
               </div>
+              {status === "error" && (
+                <p className="text-xs text-red-500 mt-1">Failed to subscribe. Please try again.</p>
+              )}
             </form>
           </div>
           

@@ -1,22 +1,27 @@
 import { NextResponse } from 'next/server';
-import { adminDb } from '@/lib/firebase/admin';
+import { supabaseAdmin } from '@/lib/supabase/server';
 import { sendEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
     
-    // 1. Store in Firebase Firestore
+    // 1. Store in Supabase
     let docId = 'pending';
     try {
-      const docRef = await adminDb.collection('projects').add({
-        ...data,
-        createdAt: new Date().toISOString(),
-        status: 'new'
-      });
-      docId = docRef.id;
+      const { data: dbData, error: dbError } = await supabaseAdmin
+        .from('projects')
+        .insert([{
+          ...data,
+          status: 'new'
+        }])
+        .select()
+        .single();
+        
+      if (dbError) throw dbError;
+      if (dbData) docId = dbData.id;
     } catch (dbError) {
-      console.error("Error saving to Firebase:", dbError);
+      console.error("Error saving to Supabase:", dbError);
       // We continue even if DB fails, to try sending the email
     }
 

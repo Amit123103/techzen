@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { collection, onSnapshot, query, orderBy, limit } from 'firebase/firestore';
-import { db } from '@/lib/firebase/client';
+import { supabase } from '@/lib/supabase/client';
 import { MessageSquare, X, Send, Star } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -11,7 +10,7 @@ type Testimonial = {
   name: string;
   company: string;
   message: string;
-  createdAt: string;
+  created_at: string;
 };
 
 export function ClientSuccessWidget() {
@@ -22,30 +21,36 @@ export function ClientSuccessWidget() {
 
   // Real-time listener for testimonials
   useEffect(() => {
-    if (!db) return; // If Firebase isn't configured, skip
-
-    try {
-      const q = query(
-        collection(db, 'testimonials'),
-        orderBy('createdAt', 'desc'),
-        limit(10)
-      );
-
-      const unsubscribe = onSnapshot(q, (snapshot) => {
-        const newMessages = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        })) as Testimonial[];
+    const fetchTestimonials = async () => {
+      if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return;
+      
+      const { data, error } = await supabase
+        .from('testimonials')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(10);
         
-        setMessages(newMessages);
-      }, (error) => {
-        console.error("Firestore listen error:", error);
-      });
+      if (!error && data) {
+        setMessages(data as Testimonial[]);
+      }
+    };
 
-      return () => unsubscribe();
-    } catch (e) {
-      console.log("Firebase not fully configured yet.");
-    }
+    fetchTestimonials();
+
+    if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return;
+
+    // Set up realtime subscription
+    const channel = supabase
+      .channel('public:testimonials')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'testimonials' }, (payload) => {
+        // Simple approach: Refetch on any change to keep logic simple
+        fetchTestimonials();
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {

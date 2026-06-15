@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 import { ClientSuccessWidget } from "@/components/ui/ClientSuccessWidget";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,19 +39,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${inter.className} scroll-smooth`} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col antialiased selection:bg-[var(--color-text)] selection:text-[var(--color-background)] relative">
+    <html lang="en" className={`${inter.variable} ${inter.className} scroll-smooth`} data-scroll-behavior="smooth" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col antialiased selection:bg-[var(--color-text)] selection:text-[var(--color-background)] relative" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <Navbar />
-          <main className="flex-grow flex flex-col pt-24">{children}</main>
-          <Footer />
-          <FloatingContact />
-          <ClientSuccessWidget />
+          {children}
         </ThemeProvider>
       </body>
     </html>
