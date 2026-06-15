@@ -34,6 +34,38 @@ export function MultiStepContact() {
   });
   const [isSubmitting, setIsSubmitting] = React.useState(false);
 
+  // Feedback State
+  const [feedback, setFeedback] = React.useState("");
+  const [isFeedbackSubmitting, setIsFeedbackSubmitting] = React.useState(false);
+  const [feedbackSuccess, setFeedbackSuccess] = React.useState(false);
+
+  const handleFeedbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!feedback.trim()) return;
+    setIsFeedbackSubmitting(true);
+    try {
+      const response = await fetch('/api/testimonial', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: feedback,
+          name: formData.name,
+          company: formData.company || undefined,
+        }),
+      });
+      if (response.ok) {
+        setFeedbackSuccess(true);
+      } else {
+        alert('Failed to submit feedback. Please try again.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to submit feedback. Please try again.');
+    } finally {
+      setIsFeedbackSubmitting(false);
+    }
+  };
+
   const updateForm = (field: keyof FormState, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -59,6 +91,8 @@ export function MultiStepContact() {
       }
 
       setStep(5); // Success step
+      setFeedbackSuccess(false); // Reset feedback success state
+      setFeedback(""); // Reset feedback text
     } catch (error) {
       console.error('Submission error:', error);
       alert('There was a problem submitting your request. Please try again.');
@@ -252,7 +286,36 @@ export function MultiStepContact() {
                     <p className="text-lg text-[var(--color-muted)] max-w-md">
                       Thank you for reaching out, {formData.name || 'there'}. We've received your project details and one of our technical partners will be in touch within 24 hours.
                     </p>
-                    <Button className="mt-8" onClick={() => { setStep(1); setFormData({ service: "", budget: "", timeline: "", name: "", email: "", company: "", details: "" }); }}>
+                    
+                    {/* Feedback Form */}
+                    <div className="w-full max-w-md mt-8 pt-8 border-t border-[var(--color-border)]">
+                      {feedbackSuccess ? (
+                        <div className="bg-[var(--color-accent)]/10 text-[var(--color-accent)] p-4 rounded-xl border border-[var(--color-accent)]/20">
+                          <p className="font-medium">Thank you for your feedback! It means a lot to us.</p>
+                        </div>
+                      ) : (
+                        <form onSubmit={handleFeedbackSubmit} className="text-left space-y-4">
+                          <h4 className="font-semibold text-[var(--color-text)]">How was your experience?</h4>
+                          <p className="text-sm text-[var(--color-muted)]">Leave a quick testimonial to help us improve.</p>
+                          <textarea
+                            required
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                            placeholder="Write your feedback here..."
+                            className="w-full p-3 h-24 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] placeholder:text-[var(--color-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] resize-none"
+                          />
+                          <Button 
+                            type="submit" 
+                            disabled={isFeedbackSubmitting || !feedback.trim()}
+                            className="w-full bg-[var(--color-text)] text-[var(--color-background)] hover:bg-[var(--color-muted)] disabled:opacity-50"
+                          >
+                            {isFeedbackSubmitting ? "Submitting..." : "Submit Feedback"}
+                          </Button>
+                        </form>
+                      )}
+                    </div>
+
+                    <Button variant="outline" className="mt-8" onClick={() => { setStep(1); setFormData({ service: "", budget: "", timeline: "", name: "", email: "", company: "", details: "" }); }}>
                       Submit Another Project
                     </Button>
                   </motion.div>
