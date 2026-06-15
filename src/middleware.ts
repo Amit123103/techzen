@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function proxy(req: NextRequest) {
+export function middleware(req: NextRequest) {
   // Only protect the /admin routes
   if (req.nextUrl.pathname.startsWith('/admin')) {
     const basicAuth = req.headers.get('authorization');
@@ -10,7 +10,7 @@ export function proxy(req: NextRequest) {
     const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
     
     // We use a hardcoded username 'admin'
-    const expectedAuth = `Basic ${Buffer.from(`admin:${adminPassword}`).toString('base64')}`;
+    const expectedAuth = `Basic ${btoa(`admin:${adminPassword}`)}`;
 
     if (basicAuth !== expectedAuth) {
       return new NextResponse('Authentication required', {
