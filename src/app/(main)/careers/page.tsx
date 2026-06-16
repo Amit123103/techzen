@@ -169,7 +169,7 @@ export default function CareersPage() {
       {/* Culture Gallery */}
       <section className="mb-24 overflow-hidden">
         <Container>
-           <SectionHeading title="Life at TechZen" eyebrow="Culture" align="left" className="mb-12" />
+           <SectionHeading title="Life at ReInformTech" eyebrow="Culture" align="left" className="mb-12" />
         </Container>
         <div className="flex gap-4 px-4 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar">
           <div className="min-w-[80vw] md:min-w-[40vw] h-[400px] snap-center rounded-3xl overflow-hidden shrink-0 border border-[var(--color-border)]">
