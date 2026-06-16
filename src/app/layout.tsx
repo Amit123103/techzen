@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   keywords: ["enterprise software", "custom software development", "SaaS development", "web development", "mobile apps", "UI/UX design", "tech agency"],
   authors: [{ name: "ReInformTech" }],
   verification: {
-    google: "dGTUTheZXszdcgoZJhqmHI6LRNy1-39mpl5ie-7oXHI",
+    google: "FTtB_ccROSBZFkT_z_vDEbKfQ6ubsZdsv9URJUdJCs8",
   },
   openGraph: {
     title: "ReInformTech | Enterprise Software Solutions",
