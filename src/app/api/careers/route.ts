@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     try {
       const { data: dbData, error: dbError } = await supabaseAdmin
         .from('job_applications')
-        .insert([submissionData])
+        .insert([submissionData as any])
         .select()
         .single();
         

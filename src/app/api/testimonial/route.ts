@@ -39,7 +39,7 @@ export async function POST(request: Request) {
       .insert([{
         ...data,
         approved: true // In a real app, you might want this false until moderated
-      }])
+      } as any])
       .select()
       .single();
 
