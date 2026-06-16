@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     }
 
     // Extract emails into an array
-    const bccList = subscribers.map((sub) => sub.email);
+    const bccList = (subscribers as any[]).map((sub: any) => sub.email);
 
     let successCount = 0;
     
