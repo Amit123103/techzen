@@ -76,7 +76,7 @@ export default function CareersPage() {
             <p className="text-base md:text-lg text-white/90 leading-relaxed mb-8">
               We're a remote-first team of builders who value autonomy, deep work, and delivering exceptional quality without the enterprise bloat.
             </p>
-            <Button size="default" className="bg-white text-black hover:bg-gray-100 font-semibold" onClick={() => {
+            <Button size="md" className="bg-white text-black hover:bg-gray-100 font-semibold" onClick={() => {
               document.getElementById('open-roles')?.scrollIntoView({ behavior: 'smooth' });
             }}>
               View Open Positions
