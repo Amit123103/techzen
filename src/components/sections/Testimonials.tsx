@@ -31,17 +31,13 @@ export function Testimonials() {
 
   useEffect(() => {
     const fetchTestimonials = async () => {
-      if (!process.env.NEXT_PUBLIC_SUPABASE_URL) return;
-      
       try {
-        const { data, error } = await supabase
-          .from('testimonials')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(3);
-          
-        if (!error && data && data.length > 0) {
-          setRealTestimonials(data);
+        const res = await fetch('/api/testimonial', { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.length > 0) {
+            setRealTestimonials(data);
+          }
         }
       } catch (err) {
         console.error("Error fetching testimonials:", err);

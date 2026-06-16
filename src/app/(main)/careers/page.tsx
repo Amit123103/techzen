@@ -22,7 +22,7 @@ export default function CareersPage() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const res = await fetch('/api/careers');
+        const res = await fetch('/api/careers', { cache: 'no-store' });
         const data = await res.json();
         if (res.ok) {
           setJobs(data);
