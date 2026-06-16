@@ -2,25 +2,46 @@ import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase/server';
 import { sendEmail, getEmailTemplate } from '@/lib/email';
 
+export async function GET() {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('job_roles')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      if (error.code === '42P01') return NextResponse.json([]); // Table doesn't exist
+      throw error;
+    }
+
+    return NextResponse.json(data);
+  } catch (error: any) {
+    console.error("Error fetching job roles:", error);
+    return NextResponse.json({ error: "Failed to fetch job roles" }, { status: 500 });
+  }
+}
+
 export async function POST(request: Request) {
   try {
     const data = await request.json();
     
-    // Map to projects table schema
     const submissionData = {
+      role: data.role,
       name: data.name,
       email: data.email,
-      company: data.portfolio, // Reusing company for portfolio URL
-      service: `Job Application: ${data.role}`,
-      budget: 'N/A',
-      details: data.coverLetter, // Reusing details for cover letter
+      phone: data.phone || null,
+      github_url: data.github_url || null,
+      portfolio_url: data.portfolio_url || null,
+      other_url: data.other_url || null,
+      papers_description: data.papers_description || null,
+      cover_letter: data.coverLetter || null,
       status: 'new'
     };
 
     let docId = 'pending';
     try {
       const { data: dbData, error: dbError } = await supabaseAdmin
-        .from('projects')
+        .from('job_applications')
         .insert([submissionData])
         .select()
         .single();
@@ -37,9 +58,18 @@ export async function POST(request: Request) {
       <p><strong>Role:</strong> ${data.role}</p>
       <p><strong>Name:</strong> ${data.name}</p>
       <p><strong>Email:</strong> ${data.email}</p>
-      <p><strong>Portfolio/LinkedIn:</strong> <a href="${data.portfolio}">${data.portfolio}</a></p>
-      <h3>Cover Letter / Details:</h3>
-      <p style="white-space: pre-wrap;">${data.coverLetter}</p>
+      <p><strong>Phone:</strong> ${data.phone || 'N/A'}</p>
+      <p><strong>Portfolio/LinkedIn:</strong> ${data.portfolio_url ? `<a href="${data.portfolio_url}">${data.portfolio_url}</a>` : 'N/A'}</p>
+      <p><strong>GitHub:</strong> ${data.github_url ? `<a href="${data.github_url}">${data.github_url}</a>` : 'N/A'}</p>
+      <p><strong>Other Link:</strong> ${data.other_url ? `<a href="${data.other_url}">${data.other_url}</a>` : 'N/A'}</p>
+      
+      ${data.papers_description ? `
+      <h3>Publications / Papers:</h3>
+      <p style="white-space: pre-wrap;">${data.papers_description}</p>
+      ` : ''}
+
+      <h3>Cover Letter / Resume Link:</h3>
+      <p style="white-space: pre-wrap;">${data.coverLetter || 'N/A'}</p>
       <hr />
       <p><small>Database ID: ${docId}</small></p>
     `;

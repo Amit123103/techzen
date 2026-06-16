@@ -13,7 +13,11 @@ export function JobApplicationModal({ jobTitle, isOpen, onClose }: JobApplicatio
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    portfolio: "",
+    phone: "",
+    portfolio_url: "",
+    github_url: "",
+    other_url: "",
+    papers_description: "",
     coverLetter: "",
   });
   const [loading, setLoading] = useState(false);
@@ -50,7 +54,7 @@ export function JobApplicationModal({ jobTitle, isOpen, onClose }: JobApplicatio
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-lg overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
+      <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl relative max-h-[90vh] flex flex-col">
         <div className="p-6 border-b border-[var(--color-border)] flex justify-between items-center bg-[var(--color-background)] shrink-0">
           <div>
             <h2 className="text-xl font-bold text-[var(--color-text)]">Apply for {jobTitle}</h2>
@@ -76,45 +80,97 @@ export function JobApplicationModal({ jobTitle, isOpen, onClose }: JobApplicatio
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {error && (
-                <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-sm p-3 rounded-lg text-center">
+               <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-sm p-3 rounded-lg text-center">
                   {error}
                 </div>
               )}
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">Full Name *</label>
+                  <input
+                    required
+                    type="text"
+                    value={formData.name}
+                    onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">Email Address *</label>
+                  <input
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">Contact Number *</label>
+                  <input
+                    required
+                    type="tel"
+                    value={formData.phone}
+                    onChange={e => setFormData(p => ({ ...p, phone: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="+1 (234) 567-8900"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">LinkedIn / Portfolio URL *</label>
+                  <input
+                    required
+                    type="url"
+                    value={formData.portfolio_url}
+                    onChange={e => setFormData(p => ({ ...p, portfolio_url: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="https://linkedin.com/in/johndoe"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">GitHub Profile Link</label>
+                  <input
+                    type="url"
+                    value={formData.github_url}
+                    onChange={e => setFormData(p => ({ ...p, github_url: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="https://github.com/johndoe"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-sm font-medium text-[var(--color-text)]">Other Social / Project Link</label>
+                  <input
+                    type="url"
+                    value={formData.other_url}
+                    onChange={e => setFormData(p => ({ ...p, other_url: e.target.value }))}
+                    className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
+                    placeholder="https://myproject.com"
+                  />
+                </div>
+              </div>
+
               <div className="space-y-1">
-                <label className="text-sm font-medium text-[var(--color-text)]">Full Name</label>
-                <input
-                  required
-                  type="text"
-                  value={formData.name}
-                  onChange={e => setFormData(p => ({ ...p, name: e.target.value }))}
-                  className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
-                  placeholder="John Doe"
+                <label className="text-sm font-medium text-[var(--color-text)]">Public Papers / Publications (Brief Description)</label>
+                <textarea
+                  rows={2}
+                  value={formData.papers_description}
+                  onChange={e => setFormData(p => ({ ...p, papers_description: e.target.value }))}
+                  className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50 resize-none"
+                  placeholder="List any public papers, articles, or research you've authored..."
                 />
               </div>
+
               <div className="space-y-1">
-                <label className="text-sm font-medium text-[var(--color-text)]">Email Address</label>
-                <input
-                  required
-                  type="email"
-                  value={formData.email}
-                  onChange={e => setFormData(p => ({ ...p, email: e.target.value }))}
-                  className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
-                  placeholder="john@example.com"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-sm font-medium text-[var(--color-text)]">LinkedIn or Portfolio URL</label>
-                <input
-                  required
-                  type="url"
-                  value={formData.portfolio}
-                  onChange={e => setFormData(p => ({ ...p, portfolio: e.target.value }))}
-                  className="w-full bg-[var(--color-background)] border border-[var(--color-border)] rounded-lg px-4 py-2 text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/50"
-                  placeholder="https://linkedin.com/in/johndoe"
-                />
-              </div>
-              <div className="space-y-1">
-                <label className="text-sm font-medium text-[var(--color-text)]">Cover Letter or Resume Link</label>
+                <label className="text-sm font-medium text-[var(--color-text)]">Cover Letter or Resume Link *</label>
                 <textarea
                   required
                   rows={4}
