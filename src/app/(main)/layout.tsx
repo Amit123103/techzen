@@ -4,6 +4,8 @@ import { FloatingContact } from "@/components/ui/FloatingContact";
 import { ClientSuccessWidget } from "@/components/ui/ClientSuccessWidget";
 import { CookieConsent } from "@/components/ui/CookieConsent";
 
+export const dynamic = "force-dynamic";
+
 export default function MainLayout({
   children,
 }: Readonly<{
