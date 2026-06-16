@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       <p><small>Firebase Doc ID: ${docId}</small></p>
     `;
 
-    await sendEmail({
+    const adminEmailResult = await sendEmail({
       to: 'reinformtech@gmail.com', // Admin email
       subject: `New Project Request from ${data.name}`,
       html: getEmailTemplate(adminHtml),
@@ -56,11 +56,18 @@ export async function POST(request: Request) {
       <p><strong>The ReInformTech Team</strong></p>
     `;
 
-    await sendEmail({
+    const clientEmailResult = await sendEmail({
       to: data.email, // Client email
       subject: 'We received your project request - ReInformTech',
       html: getEmailTemplate(clientHtml),
     });
+
+    if (!adminEmailResult.success || !clientEmailResult.success) {
+      return NextResponse.json({ 
+        success: false, 
+        error: "Email failed to send. " + (adminEmailResult.error || clientEmailResult.error)
+      }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true, id: docId });
   } catch (error) {

@@ -80,9 +80,9 @@ export const sendEmail = async ({
     });
     
     console.log("Message sent: %s", info.messageId);
-    return true;
-  } catch (error) {
+    return { success: true };
+  } catch (error: any) {
     console.error("Error sending email:", error);
-    return false;
+    return { success: false, error: error.message || String(error) };
   }
 };
