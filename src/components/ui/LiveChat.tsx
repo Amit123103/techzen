@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 export function LiveChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, text: "Hi there! I'm David from ReInformTech. How can I help you today?", sender: "agent" }
+    { id: 1, text: "Hi there! I'm Amit from ReInformTech. How can I help you today?", sender: "agent" }
   ]);
   const [input, setInput] = useState("");
 
@@ -57,11 +57,11 @@ export function LiveChat() {
             <div className="bg-[var(--color-surface)] border-b border-[var(--color-border)] p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Agent" className="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]" />
+                  <img src="/amit-kumar.png" alt="Agent" className="w-10 h-10 rounded-full object-cover border border-[var(--color-border)]" />
                   <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[var(--color-background)] rounded-full"></div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-[var(--color-text)] text-sm">David Chen</h3>
+                  <h3 className="font-bold text-[var(--color-text)] text-sm">Amit Kumar</h3>
                   <p className="text-xs text-[var(--color-muted)]">ReInformTech Engineering</p>
                 </div>
               </div>

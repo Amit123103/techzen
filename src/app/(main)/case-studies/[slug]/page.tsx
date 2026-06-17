@@ -59,8 +59,9 @@ const caseStudiesData: Record<string, any> = {
   }
 };
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const data = caseStudiesData[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const data = caseStudiesData[slug as keyof typeof caseStudiesData];
   if (!data) return { title: "Not Found" };
   
   return {
@@ -69,8 +70,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function CaseStudyDetail({ params }: { params: { slug: string } }) {
-  const data = caseStudiesData[params.slug];
+export default async function CaseStudyDetail({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const data = caseStudiesData[slug as keyof typeof caseStudiesData];
   
   if (!data) {
     notFound();

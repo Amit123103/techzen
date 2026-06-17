@@ -100,12 +100,12 @@ export function ImageShowcase() {
               className="flex gap-6 items-center border-t border-[var(--color-border)] mt-8 pt-6"
             >
                <div className="flex flex-col">
-                  <AnimatedCounter to={10} suffix="+" className="text-2xl font-extrabold text-[var(--color-primary)]" />
+                  <AnimatedCounter to={2} suffix="+" className="text-2xl font-extrabold text-[var(--color-primary)]" />
                   <span className="text-[10px] text-[var(--color-primary)]/70 uppercase tracking-widest font-bold mt-1">Years Experience</span>
                </div>
                <div className="w-px h-8 bg-[var(--color-border)]"></div>
                <div className="flex flex-col">
-                  <AnimatedCounter to={150} suffix="+" duration={2.5} className="text-2xl font-extrabold text-[var(--color-primary)]" />
+                  <AnimatedCounter to={10} suffix="+" duration={2.5} className="text-2xl font-extrabold text-[var(--color-primary)]" />
                   <span className="text-[10px] text-[var(--color-primary)]/70 uppercase tracking-widest font-bold mt-1">Projects Delivered</span>
                </div>
             </motion.div>

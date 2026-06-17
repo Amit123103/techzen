@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ArrowRight, ArrowLeft, Target, Search, CircleDollarSign } from "lucide-react";
 
 type FormState = {
   service: string;
@@ -359,11 +359,11 @@ export function MultiStepContact() {
             </div>
           </div>
 
-          {/* Right Column: Contact & Map */}
+          {/* Right Column: Contact, Lead Magnets & Map */}
           <div className="bg-[var(--color-background)] border border-[var(--color-border)] rounded-3xl p-8 md:p-12 shadow-sm relative overflow-hidden h-full flex flex-col mt-4 lg:mt-0">
             <h3 className="text-2xl font-bold text-[var(--color-text)] mb-8">Contact & Location</h3>
             
-            <div className="space-y-6 mb-8 flex-grow">
+            <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0 mt-1 border border-[var(--color-accent)]/20">
                   <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -385,15 +385,44 @@ export function MultiStepContact() {
                 </div>
                 <div>
                   <h4 className="text-[var(--color-text)] font-semibold mb-1">Email Us</h4>
-                  <a href="mailto:reinformtech@gmail.com" className="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] transition-colors">
-                    reinformtech@gmail.com
+                  <a href="mailto:contact@reinformtech.com" className="text-[var(--color-muted)] text-sm hover:text-[var(--color-accent)] transition-colors">
+                    contact@reinformtech.com
                   </a>
                 </div>
               </div>
             </div>
 
+            {/* Lead Magnets */}
+            <div className="space-y-3 mb-8">
+              <p className="text-xs font-bold text-[var(--color-text)] uppercase tracking-wider mb-3">Free Resources</p>
+              
+              <a href="#contact" className="flex items-start gap-3 p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 transition-colors group">
+                <Target className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                <div>
+                  <h4 className="text-sm font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">Free 30-Min Strategy Call</h4>
+                  <p className="text-xs text-[var(--color-muted)]">Discuss your project with our team — no commitment required.</p>
+                </div>
+              </a>
+
+              <a href="#contact" className="flex items-start gap-3 p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 transition-colors group">
+                <Search className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                <div>
+                  <h4 className="text-sm font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">Free System Audit</h4>
+                  <p className="text-xs text-[var(--color-muted)]">We&apos;ll review your existing system and provide improvement recommendations.</p>
+                </div>
+              </a>
+
+              <a href="#contact" className="flex items-start gap-3 p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] hover:border-[var(--color-accent)]/50 transition-colors group">
+                <CircleDollarSign className="w-5 h-5 flex-shrink-0 mt-0.5 text-[var(--color-accent)]" />
+                <div>
+                  <h4 className="text-sm font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)] transition-colors">Free MVP Estimation</h4>
+                  <p className="text-xs text-[var(--color-muted)]">Get a project cost estimate within 24 hours — completely free.</p>
+                </div>
+              </a>
+            </div>
+
             {/* Google Map */}
-            <div className="w-full h-64 md:h-80 rounded-xl overflow-hidden border border-[var(--color-border)] mt-auto relative z-10 shadow-inner">
+            <div className="w-full h-48 md:h-56 rounded-xl overflow-hidden border border-[var(--color-border)] mt-auto relative z-10 shadow-inner">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14010.53630252554!2d77.3783!3d28.6180!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef9cf350a4bf%3A0x8cf25211d293f0b2!2sSector%2063A%2C%20Noida%2C%20Uttar%20Pradesh%20201301!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                 width="100%" 

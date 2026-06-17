@@ -21,21 +21,21 @@ const teamMembers = [
   {
     name: "Aditya Kumar Singh",
     role: "Co-Founder & CEO",
-    bio: "Visionary leader driving ReInformTech's mission to build scalable enterprise solutions. Aditya brings deep expertise in business strategy and technology leadership.",
+    bio: "Driving ReInformTech's vision with hands-on expertise in business strategy and full-stack development. Built and deployed production systems across education, logistics, and SaaS domains.",
     image: "/aditya-kumar-singh.png",
-    skills: ["Business Strategy", "Tech Leadership", "Product Vision", "Enterprise Solutions", "DevOps Engineer", "Full-Stack Developer"],
-    social: { linkedin: "https://www.linkedin.com/in/adityakumars/", github: "https://github.com/Aditya-k1-singh", mail: "mailto:reinformtech@gmail.com" }
+    skills: ["Business Strategy", "Tech Leadership", "Product Vision", "DevOps", "Full-Stack Development", "System Design"],
+    social: { linkedin: "https://www.linkedin.com/in/adityakumars/", github: "https://github.com/Aditya-k1-singh", mail: "mailto:contact@reinformtech.com" }
   },
   {
     name: "Amit Kumar",
     role: "Co-Founder & CTO",
-    bio: "Engineering powerhouse leading the technical architecture at ReInformTech. Amit ensures every product is built with scalability, performance, and excellence at its core.",
+    bio: "Engineering lead architecting scalable systems at ReInformTech. Specializes in cloud infrastructure, AI/ML pipelines, and performance optimization. 2+ years building production-grade software.",
     image: "/amit-kumar.png",
-    skills: ["System Architecture", "Full-Stack Development", "Cloud Infrastructure", "Machine Learning & AI Specialist", "DevOps Engineer", "Team Leadership"],
+    skills: ["System Architecture", "Full-Stack Development", "Cloud Infrastructure", "AI & Machine Learning", "DevOps", "Team Leadership"],
     social: { 
       linkedin: "https://www.linkedin.com/in/amit-akhil/", 
       github: "https://github.com/Amit123103", 
-      mail: "mailto:reinformtech@gmail.com",
+      mail: "mailto:contact@reinformtech.com",
       portfolio: "https://amit123103.github.io/SmartPortfolio/"
     }
   },

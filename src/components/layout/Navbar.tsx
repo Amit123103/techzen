@@ -13,20 +13,19 @@ import { ServiceTicker } from "@/components/layout/ServiceTicker";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/#services" },
+  { name: "Portfolio", href: "/portfolio" },
   { 
     name: "Solutions", 
     href: "/#solutions",
     dropdown: [
-      { name: "Enterprise SaaS", href: "/solutions/enterprise-saas" },
-      { name: "Cloud Architecture", href: "/solutions/cloud-architecture" },
-      { name: "Mobile Applications", href: "/solutions/mobile-applications" },
-      { name: "AI Automation", href: "/solutions/ai-automation" },
-      { name: "Custom CRM", href: "/solutions/custom-crm" },
-      { name: "E-Commerce Platforms", href: "/solutions/e-commerce" }
+      { name: "MVP Development", href: "/solutions/enterprise-saas" },
+      { name: "Business Automation", href: "/solutions/cloud-architecture" },
+      { name: "AI Solutions", href: "/solutions/ai-automation" },
+      { name: "Case Studies", href: "/case-studies" },
     ]
   },
+  { name: "Pricing", href: "/pricing" },
   { name: "About", href: "/#about" },
-  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/#contact" },
 ];
 
@@ -127,7 +126,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
             <ThemeToggle />
-            <Button size="sm" onClick={(e) => handleNavClick(e, '/#contact')}>Book Consultation</Button>
+            <Button size="sm" onClick={(e) => handleNavClick(e, '/#contact')}>Free Strategy Call</Button>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -218,7 +217,7 @@ export function Navbar() {
               </div>
               <div className="py-6">
                 <Button className="w-full" onClick={() => setMobileMenuOpen(false)}>
-                  Book Consultation
+                  Free Strategy Call
                 </Button>
               </div>
             </div>

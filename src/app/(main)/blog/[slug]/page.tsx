@@ -54,14 +54,16 @@ const blogData: Record<string, any> = {
   }
 };
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const data = blogData[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const data = blogData[slug as keyof typeof blogData];
   if (!data) return { title: "Not Found" };
   return { title: `${data.title} | ReInformTech Blog` };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogData[params.slug];
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogData[slug as keyof typeof blogData];
   
   if (!post) {
     notFound(); // Typically you would want to render the other posts here but just for demo

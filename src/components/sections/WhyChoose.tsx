@@ -10,9 +10,9 @@ import { Users, Zap, ShieldCheck, HeartHandshake } from "lucide-react";
 const pillars = [
   {
     title: "Experienced Team",
-    description: "Senior engineers and designers with a track record of delivering at scale.",
-    stat: "10+",
-    statLabel: "Years Avg Experience",
+    description: "Dedicated engineers and designers who treat your product like their own.",
+    stat: "2+",
+    statLabel: "Years Building Products",
     icon: Users,
   },
   {
@@ -74,12 +74,12 @@ export function WhyChoose() {
               />
               <div className="flex justify-start items-center gap-6 mt-4">
                 <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">98%</span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Client Retention</span>
+                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">100%</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Dedication</span>
                 </div>
                 <div className="w-px h-12 bg-[var(--color-border)] mx-2" />
                 <div className="flex flex-col">
-                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">200+</span>
+                  <span className="text-3xl font-bold text-[var(--color-primary)] mb-1">10+</span>
                   <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-muted)]">Projects Shipped</span>
                 </div>
               </div>

@@ -72,20 +72,20 @@ export function Hero() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-surface)] border border-[var(--color-border)] mb-6 shadow-sm">
             <span className="flex h-2 w-2 rounded-full bg-[var(--color-accent)]"></span>
             <span className="text-xs font-semibold tracking-wide text-[var(--color-secondary)] uppercase">
-              Digital Product Studio
+              Custom Software & AI Solutions
             </span>
           </div>
         </AnimateOnScroll>
 
         <AnimateOnScroll variants={fadeUp} delay={0.2}>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[var(--color-primary)] text-balance mb-6 max-w-3xl mx-auto leading-tight">
-            Handcrafted digital tools for growing teams.
+            We help startups & businesses automate operations and grow faster.
           </h1>
         </AnimateOnScroll>
 
         <AnimateOnScroll variants={fadeUp} delay={0.3}>
           <p className="text-base md:text-lg text-[var(--color-muted)] text-balance mb-10 max-w-xl mx-auto leading-relaxed">
-            We're a small, dedicated team of builders. We write clean code, design simple interfaces, and actually care about the products we make for you. No corporate jargon, just good software.
+            Custom software, AI automation & SaaS development for schools, startups, and growing businesses. We reduce costs, eliminate manual work, and ship fast.
           </p>
         </AnimateOnScroll>
 

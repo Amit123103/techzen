@@ -9,36 +9,54 @@ export const metadata: Metadata = {
   description: "Read our latest articles on enterprise software development, system architecture, and engineering leadership.",
 };
 
-const categories = ["All", "Web Development", "React", "Cloud", "Startups", "Engineering Leadership"];
+const categories = ["All", "SaaS", "AI & Automation", "Startups", "Business Tools", "Technology"];
 
 const posts = [
   {
-    slug: "scaling-nextjs-enterprise",
-    title: "Scaling Next.js for Enterprise SaaS",
-    category: "React",
-    date: "Jun 12, 2026",
+    slug: "cost-to-build-saas-2026",
+    title: "How Much Does It Cost to Build a SaaS Product in 2026?",
+    category: "SaaS",
+    date: "Jun 15, 2026",
+    readTime: "10 min read",
+    description: "A realistic breakdown of SaaS development costs — from MVP to full product. We cover tech stack choices, hosting, team size, and what most agencies won't tell you about hidden costs.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    slug: "ai-automation-small-business",
+    title: "AI Automation for Small Businesses: A Practical Guide",
+    category: "AI & Automation",
+    date: "Jun 10, 2026",
     readTime: "8 min read",
-    description: "Discover the architectural patterns we use to scale Next.js applications to support millions of active users without compromising performance.",
+    description: "You don't need a data science team to use AI. Here's how small businesses are using ChatGPT, automation scripts, and smart tools to save 5+ hours daily on repetitive work.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    slug: "erp-vs-excel",
+    title: "ERP vs Excel: When Should Your Business Make the Switch?",
+    category: "Business Tools",
+    date: "Jun 5, 2026",
+    readTime: "6 min read",
+    description: "Excel works until it doesn't. Learn the signs that your business has outgrown spreadsheets, and how a custom ERP can reduce errors by 80% and save your team hours every week.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    slug: "how-to-build-mvp-on-budget",
+    title: "How to Build an MVP on a Budget (Without Cutting Corners)",
+    category: "Startups",
+    date: "May 28, 2026",
+    readTime: "9 min read",
+    description: "Building an MVP doesn't mean building a bad product. Here's our step-by-step guide to shipping a quality MVP in 6–8 weeks without blowing your budget.",
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    slug: "migrating-to-kubernetes",
-    title: "The Pragmatic Guide to Kubernetes Migration",
-    category: "Cloud",
-    date: "May 28, 2026",
-    readTime: "12 min read",
-    description: "A step-by-step walkthrough of how we migrated a legacy logistics monolith to a resilient Kubernetes cluster with zero downtime.",
-    image: "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    slug: "startup-tech-stack-guide-2026",
+    title: "Choosing the Right Tech Stack for Your Startup in 2026",
+    category: "Technology",
+    date: "May 20, 2026",
+    readTime: "7 min read",
+    description: "React vs Vue? Node.js vs Python? Supabase vs Firebase? We break down the top technology choices for startups and help you pick what actually matters for your specific use case.",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
-  {
-    slug: "building-engineering-culture",
-    title: "Building an Engineering Culture that Retains Talent",
-    category: "Engineering Leadership",
-    date: "Apr 15, 2026",
-    readTime: "6 min read",
-    description: "Why ping-pong tables don't matter, and what engineers actually care about when choosing to stay at a company.",
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  }
 ];
 
 export default function BlogPage() {
@@ -68,14 +86,14 @@ export default function BlogPage() {
         </div>
 
         {/* Categories */}
-        <div className="flex overflow-x-auto gap-3 pb-4 mb-12 hide-scrollbar">
+        <div className="flex overflow-x-auto gap-3 pb-4 mb-12 hide-scrollbar pointer-events-none select-none">
           {categories.map((cat, i) => (
-            <button 
+            <div 
               key={i} 
-              className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium transition-colors ${i === 0 ? "bg-[var(--color-text)] text-[var(--color-background)]" : "bg-[var(--color-surface)] text-[var(--color-muted)] hover:text-[var(--color-text)] border border-[var(--color-border)]"}`}
+              className={`px-4 py-2 rounded-full whitespace-nowrap text-sm font-medium ${i === 0 ? "bg-[var(--color-text)] text-[var(--color-background)]" : "bg-[var(--color-surface)] text-[var(--color-muted)] border border-[var(--color-border)]"}`}
             >
               {cat}
-            </button>
+            </div>
           ))}
         </div>
 

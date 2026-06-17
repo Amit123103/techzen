@@ -15,24 +15,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ReInformTech | Enterprise Software Solutions & Digital Products",
-  description: "ReInformTech builds high-performance, scalable software solutions for startups and enterprises. Specializing in custom web development, mobile apps, and enterprise SaaS.",
-  keywords: ["enterprise software", "custom software development", "SaaS development", "web development", "mobile apps", "UI/UX design", "tech agency"],
+  title: "ReInformTech | Custom Software, AI Automation & SaaS Development",
+  description: "We help startups & businesses automate operations, reduce costs, and grow faster through custom software, AI solutions, and SaaS development. Get a free estimate today.",
+  keywords: ["custom software development", "MVP development", "AI automation", "SaaS development", "business automation", "ERP development", "startup software", "web development India", "app development Noida"],
   authors: [{ name: "ReInformTech" }],
   verification: {
     google: "FTtB_ccROSBZFkT_z_vDEbKfQ6ubsZdsv9URJUdJCs8",
   },
   openGraph: {
-    title: "ReInformTech | Enterprise Software Solutions",
-    description: "Building scalable digital products that drive enterprise growth. Custom software, SaaS platforms, and mobile applications.",
+    title: "ReInformTech | Custom Software, AI Automation & SaaS Development",
+    description: "We help startups & businesses automate operations and grow faster through custom software and AI solutions.",
     type: "website",
     locale: "en_US",
     siteName: "ReInformTech",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ReInformTech | Enterprise Software Solutions",
-    description: "Building scalable digital products that drive enterprise growth.",
+    title: "ReInformTech | Custom Software & AI Solutions",
+    description: "Custom software, AI automation & SaaS development for growing businesses. Get a free estimate.",
   },
 };
 

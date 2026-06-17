@@ -8,23 +8,22 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 
 const footerNavigation = {
   services: [
-    { name: "Custom Software", href: "/solutions/custom-crm" },
-    { name: "Web Development", href: "/solutions/enterprise-saas" },
-    { name: "Mobile Apps", href: "/solutions/mobile-applications" },
+    { name: "MVP Development", href: "/solutions/enterprise-saas" },
+    { name: "Business Automation", href: "/solutions/cloud-architecture" },
+    { name: "AI Solutions", href: "/solutions/ai-automation" },
     { name: "UI/UX Design", href: "/#services" },
-    { name: "Cloud Migration", href: "/solutions/cloud-architecture" },
+    { name: "Portfolio", href: "/portfolio" },
   ],
   company: [
     { name: "About Us", href: "/#about" },
     { name: "Careers", href: "/careers" },
     { name: "Our Team", href: "/#team" },
+    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/#contact" },
   ],
   resources: [
-    { name: "Blog", href: "/#blog" },
-    { name: "Case Studies", href: "/#case-studies" },
-    { name: "Webinars", href: "/#webinars" },
-    { name: "Help Center", href: "/#help" },
+    { name: "Blog", href: "/blog" },
+    { name: "Case Studies", href: "/case-studies" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
@@ -115,7 +114,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-sm leading-6 text-[var(--color-muted)] max-w-xs">
-              Building scalable, enterprise-grade software solutions for modern businesses outgrowing their tech stack.
+              We help schools, startups, and businesses automate operations, reduce costs, and grow faster through custom software and AI solutions.
             </p>
             <div className="flex space-x-6">
               {footerNavigation.social.map((item) => (

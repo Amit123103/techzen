@@ -6,45 +6,30 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 import { AnimateOnScroll } from "@/components/ui/AnimateOnScroll";
 import { staggerContainer, fadeUp } from "@/lib/animations";
-import { Code2, Smartphone, Layout, Cloud, Bot, Palette, Check } from "lucide-react";
+import { Code2, Cloud, Bot, Check } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 
 const services = [
   {
-    title: "Custom Software",
-    description: "We build software that actually works the way your team does. No bloated features, just tools designed to fix your specific bottlenecks.",
+    title: "Startup MVP Development",
+    description: "Turn your idea into a working product in weeks, not months. We build web apps, mobile apps, and custom SaaS platforms with clean architecture that scales as you grow.",
     icon: Code2,
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    sub: ["Web Apps", "Mobile Apps", "SaaS Platforms", "UI/UX Design"],
   },
   {
-    title: "Web Development",
-    description: "Fast, reliable websites built with modern tools. We focus on clean code so your site stays quick and doesn't break.",
-    icon: Layout,
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Mobile App Development",
-    description: "Apps that your customers will actually enjoy using, whether they're on an iPhone or an Android.",
-    icon: Smartphone,
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "UI/UX Design",
-    description: "We design interfaces that make sense. If your users need a manual to figure out your software, we haven't done our job.",
-    icon: Palette,
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Cloud Solutions",
-    description: "We set up your servers and infrastructure so they don't crash when you finally get that big spike in traffic.",
+    title: "Business Automation",
+    description: "Stop wasting time on spreadsheets and manual processes. We build custom ERP systems, CRM tools, and workflow automation that eliminates repetitive work and reduces errors.",
     icon: Cloud,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    sub: ["Custom ERP", "Cloud Migration", "Workflow Tools", "Integrations"],
   },
   {
-    title: "AI & Automation",
-    description: "We write scripts to handle the boring, repetitive tasks so your team can focus on the real work.",
+    title: "AI Solutions",
+    description: "Leverage AI to automate customer support, generate insights from data, and build intelligent features into your existing products — without hiring an ML team.",
     icon: Bot,
     image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    sub: ["AI Chatbots", "Data Analytics", "Process Automation", "Smart Features"],
   },
 ];
 
@@ -78,9 +63,9 @@ export function Services() {
           <div className="flex flex-col gap-8">
             <AnimateOnScroll className="flex flex-col items-start text-left">
               <SectionHeading
-                eyebrow="Our Services"
-                title="What we do best"
-                description="We don't just write code; we solve complex problems. We build custom software solutions tailored perfectly to your unique business bottlenecks. Our team of expert developers, designers, and strategists work closely with you from concept to deployment. Whether you need a sleek mobile app, a robust web platform, or intelligent AI automation, we have the skills and the track record to deliver excellence."
+                eyebrow="What We Do"
+                title="Three things we do really well"
+                description="Instead of doing everything, we focus on three core areas where we deliver the most value. Each is designed to solve the real problems that startups and businesses face."
                 align="left"
               />
               <div className="mt-8 flex flex-col gap-5">
@@ -134,9 +119,18 @@ export function Services() {
                         <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
                       </CardHeader>
                       <CardContent className="relative z-10 pb-8">
-                        <CardDescription className="text-sm leading-relaxed text-[var(--color-muted)] group-hover:text-[var(--color-primary)]/80 transition-colors duration-300">
+                        <CardDescription className="text-sm leading-relaxed text-[var(--color-muted)] group-hover:text-[var(--color-primary)]/80 transition-colors duration-300 mb-4">
                           {service.description}
                         </CardDescription>
+                        {service.sub && (
+                          <div className="flex flex-wrap gap-1.5">
+                            {service.sub.map((s: string) => (
+                              <span key={s} className="px-2 py-0.5 bg-[var(--color-background)] border border-[var(--color-border)] text-[var(--color-text)] text-[10px] rounded-full font-medium">
+                                {s}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
                   </AnimateOnScroll>
@@ -210,7 +204,7 @@ export function Services() {
               {/* Orbiting Track */}
               <div className="relative w-[500px] h-[500px] rounded-full border border-dashed border-[var(--color-border)] animate-spin-slow group z-10 hover:border-solid transition-all duration-500">
                 {services.map((service, index) => {
-                   const angle = index * 60;
+                   const angle = index * 120;
                    return (
                      <div 
                        key={service.title}
