@@ -12,10 +12,15 @@ import { Team } from "@/components/sections/Team";
 import { MultiStepContact } from "@/components/sections/MultiStepContact";
 import { AnimatedLine } from "@/components/ui/AnimatedLine";
 
+import { TrustedBy } from "@/components/sections/TrustedBy";
+
+export const revalidate = 60; // Revalidate the page every 60 seconds so new clients show up automatically
+
 export default function Home() {
   return (
     <>
       <Hero />
+      <TrustedBy />
       <TrustSignals />
       <AnimatedLine />
       <ImageShowcase />
