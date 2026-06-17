@@ -32,9 +32,12 @@ export const getEmailTemplate = (bodyContent: string) => `
     </div>
     <div class="footer">
       <div class="social-links">
-        <a href="https://linkedin.com/company/reinformtech" target="_blank">LinkedIn</a>
-        <a href="https://twitter.com/reinformtech" target="_blank">Twitter</a>
-        <a href="https://facebook.com/reinformtech" target="_blank">Facebook</a>
+        <a href="https://www.linkedin.com/company/131924402/admin/dashboard/" target="_blank">LinkedIn</a>
+        <a href="https://x.com/Reinformtech" target="_blank">Twitter</a>
+        <a href="https://www.facebook.com/profile.php?id=61590954721577" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/reinformtech/" target="_blank">Instagram</a>
+        <a href="https://www.youtube.com/channel/UCm-dQf6VkOxQ_hMgrm2LeCg" target="_blank">YouTube</a>
+        <a href="https://discord.gg/NHRSFUSAu" target="_blank">Discord</a>
       </div>
       <div class="legal-links">
         <a href="https://reinformtech.com/privacy" target="_blank">Privacy Policy</a>

@@ -19,10 +19,9 @@ const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const teamMembers = [
   {
-    name: "Aditya Kumar Singh",
+    name: "Mayank Kumar Singh",
     role: "Co-Founder & CEO",
     bio: "Driving ReInformTech's vision with hands-on expertise in business strategy and full-stack development. Built and deployed production systems across education, logistics, and SaaS domains.",
-    image: "/aditya-kumar-singh.png",
     skills: ["Business Strategy", "Tech Leadership", "Product Vision", "DevOps", "Full-Stack Development", "System Design"],
     social: { linkedin: "https://www.linkedin.com/in/adityakumars/", github: "https://github.com/Aditya-k1-singh", mail: "mailto:contact@reinformtech.com" }
   },
@@ -30,7 +29,6 @@ const teamMembers = [
     name: "Amit Kumar",
     role: "Co-Founder & CTO",
     bio: "Engineering lead architecting scalable systems at ReInformTech. Specializes in cloud infrastructure, AI/ML pipelines, and performance optimization. 2+ years building production-grade software.",
-    image: "/amit-kumar.png",
     skills: ["System Architecture", "Full-Stack Development", "Cloud Infrastructure", "AI & Machine Learning", "DevOps", "Team Leadership"],
     social: { 
       linkedin: "https://www.linkedin.com/in/amit-akhil/", 
@@ -60,9 +58,6 @@ export function Team() {
               <AnimateOnScroll key={index} variants={fadeUp}>
                 <div className="group rounded-3xl bg-[var(--color-background)] border border-[var(--color-border)] overflow-hidden hover:shadow-lg hover:border-[var(--color-accent)] transition-all duration-300">
                   <div className="p-8">
-                    <div className="w-24 h-24 mb-6 rounded-full overflow-hidden border-2 border-[var(--color-border)] group-hover:border-[var(--color-accent)] transition-colors">
-                      <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
-                    </div>
                     <h3 className="text-xl font-bold text-[var(--color-text)] mb-1">{member.name}</h3>
                     <p className="text-sm font-semibold text-[var(--color-accent)] mb-4">{member.role}</p>
                     <p className="text-[var(--color-muted)] text-sm mb-6 leading-relaxed min-h-[60px]">{member.bio}</p>

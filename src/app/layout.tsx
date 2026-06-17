@@ -33,6 +33,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ReInformTech | Custom Software & AI Solutions",
     description: "Custom software, AI automation & SaaS development for growing businesses. Get a free estimate.",
+    creator: "@Reinformtech",
+    site: "@Reinformtech",
   },
 };
 

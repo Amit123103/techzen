@@ -10,13 +10,13 @@ export async function FloatingContact() {
 
   const links = {
     whatsapp: settings?.whatsapp || "https://wa.me/1234567890",
-    instagram: settings?.instagram || "https://instagram.com",
-    linkedin: settings?.linkedin || "https://linkedin.com",
+    instagram: settings?.instagram || "https://www.instagram.com/reinformtech/",
+    linkedin: settings?.linkedin || "https://www.linkedin.com/company/131924402/admin/dashboard/",
     phone: settings?.phone || "tel:+1234567890",
-    youtube: settings?.youtube || "https://youtube.com",
-    facebook: settings?.facebook || "https://facebook.com",
-    twitter: settings?.twitter || "https://twitter.com",
-    discord: settings?.discord || "https://discord.com",
+    youtube: settings?.youtube || "https://www.youtube.com/channel/UCm-dQf6VkOxQ_hMgrm2LeCg",
+    facebook: settings?.facebook || "https://www.facebook.com/profile.php?id=61590954721577",
+    twitter: settings?.twitter || "https://x.com/Reinformtech",
+    discord: settings?.discord || "https://discord.gg/NHRSFUSAu",
   };
 
   return (
